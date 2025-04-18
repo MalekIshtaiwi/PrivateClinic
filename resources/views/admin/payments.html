@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم المالية</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-lightest: #deebec;
+            --color-light: #bed9dd;
+            --color-medium: #aecfd0;
+            --color-primary: #73b3b2;
+            --color-dark: #3c979f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background-color: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dashboard-title {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #333;
+        }
+        
+        .btn-action {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-action:hover {
+            background-color: var(--color-dark);
+        }
+        
+        .btn-export {
+            background-color: var(--color-medium);
+        }
+        
+        .filter-bar {
+            background-color: var(--color-medium);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .filter-select, .filter-date {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            color: #333;
+            background-color: white;
+        }
+        
+        .stats-card {
+            background-color: white;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .stats-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .stats-value {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            text-align: center;
+        }
+        
+        .currency {
+            color: var(--color-dark);
+            margin-right: 3px;
+            font-size: 1rem;
+        }
+        
+        .transactions-table {
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        
+        .transactions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .transactions-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .table {
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            background-color: var(--color-lightest);
+            color: #333;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .table td {
+            vertical-align: middle;
+            border-color: #f2f2f2;
+            color: #333;
+        }
+        
+        .table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .badge-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .badge-completed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background-color: transparent;
+            color: var(--color-primary);
+            border: none;
+            transition: all 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--color-lightest);
+        }
+        
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .page-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .page-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            background-color: var(--color-lightest);
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .page-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        
+        .page-btn:hover:not(.active) {
+            background-color: var(--color-light);
+        }
+        
+        .main-container {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="dashboard-title">لوحة التحكم المالية</h1>
+        <div class="d-flex gap-2">
+            <button class="btn-action">
+                <i class="fas fa-plus me-1"></i>
+                تسجيل دفعة
+            </button>
+            <button class="btn-action btn-export">
+                <i class="fas fa-file-export me-1"></i>
+                تصدير التقرير
+            </button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Filter Section -->
+        <div class="filter-bar">
+            <div class="row">
+                <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="filter-label">التاريخ من</div>
+                    <input type="text" class="filter-date" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="filter-label">التاريخ إلى</div>
+                    <input type="text" class="filter-date" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="filter-label">طريقة الدفع</div>
+                    <select class="filter-select">
+                        <option>الكل</option>
+                        <option>بطاقة ائتمان</option>
+                        <option>تحويل بنكي</option>
+                        <option>نقدي</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="filter-label">حالة الدفع</div>
+                    <select class="filter-select">
+                        <option>الكل</option>
+                        <option>مكتمل</option>
+                        <option>معلق</option>
+                        <option>ملغي</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row gy-4">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-label">إجمالي المدفوعات</div>
+                    <div class="stats-value">
+                        <span class="currency">ر.س</span>125,000
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-label">المدفوعات المعلقة</div>
+                    <div class="stats-value">
+                        <span class="currency">ر.س</span>15,000
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-label">عدد المعاملات</div>
+                    <div class="stats-value">256</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-label">متوسط قيمة المعاملة</div>
+                    <div class="stats-value">
+                        <span class="currency">ر.س</span>488
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="transactions-table">
+            <div class="transactions-header">
+                <div class="transactions-title">المعاملات</div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>رقم المعاملة</th>
+                            <th>التاريخ</th>
+                            <th>العميل</th>
+                            <th>المبلغ</th>
+                            <th>طريقة الدفع</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1234</td>
+                            <td>15/04/2025</td>
+                            <td>أحمد محمد</td>
+                            <td>1,500 ر.س</td>
+                            <td>بطاقة ائتمان</td>
+                            <td><span class="badge-status badge-completed">مكتمل</span></td>
+                            <td>
+                                <button class="action-btn">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-container">
+                <div class="page-info">
+                    عرض 1 إلى 20 من 256 نتيجة
+                </div>
+                <div class="page-buttons">
+                    <button class="page-btn">السابق</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">التالي</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

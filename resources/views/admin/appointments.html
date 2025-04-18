@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المواعيد</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-lightest: #deebec;
+            --color-light: #bed9dd;
+            --color-medium: #aecfd0;
+            --color-primary: #73b3b2;
+            --color-dark: #3c979f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .page-header {
+            font-weight: bold;
+            color: var(--color-dark);
+            font-size: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--color-dark);
+            border-color: var(--color-dark);
+        }
+        
+        .search-box {
+            border-radius: 20px;
+            border: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+        
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .appointments-table th {
+            background-color: var(--color-light);
+            color: #495057;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .appointments-table td {
+            vertical-align: middle;
+            border-color: #f2f2f2;
+        }
+        
+        .appointments-table tbody tr:hover {
+            background-color: var(--color-lightest);
+        }
+        
+        .appointments-table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .patient-name {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .patient-id {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        
+        .badge-confirmed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-weight: 500;
+        }
+        
+        .badge-waiting {
+            background-color: #fff3cd;
+            color: #664d03;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-weight: 500;
+        }
+        
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #6c757d;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-icon:hover {
+            background-color: #e9ecef;
+        }
+        
+        .btn-icon.delete {
+            color: #dc3545;
+        }
+        
+        .btn-icon.delete:hover {
+            background-color: #f8d7da;
+        }
+        
+        .btn-icon.edit {
+            color: var(--color-dark);
+        }
+        
+        .btn-icon.edit:hover {
+            background-color: var(--color-lightest);
+        }
+        
+        .pagination .page-link {
+            color: var(--color-dark);
+        }
+        
+        .pagination .page-item.active .page-link {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        
+        .filter-button {
+            background-color: white;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+        
+        .filter-button:hover {
+            background-color: var(--color-lightest);
+        }
+        
+        .add-button {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        
+        .add-button:hover {
+            background-color: var(--color-dark);
+            color: white;
+        }
+        
+        .email-button {
+            color: var(--color-dark);
+            border: 1px solid var(--color-medium);
+        }
+        
+        .email-button:hover {
+            background-color: var(--color-lightest);
+        }
+        
+        .delete-button {
+            color: #dc3545;
+            border: 1px solid #f8d7da;
+        }
+        
+        .delete-button:hover {
+            background-color: #f8d7da;
+        }
+        
+        .actions-column {
+            min-width: 100px;
+        }
+        
+        .checkbox-column {
+            width: 30px;
+        }
+        
+        .page-info {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-light py-2">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-sm btn-outline-secondary me-2">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-calendar"></i>
+                </button>
+            </div>
+            <h1 class="page-header mb-0">إدارة المواعيد</h1>
+            <button class="btn add-button">
+                <i class="fas fa-plus me-1"></i> موعد جديد
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-3">
+        <!-- Toolbar -->
+        <div class="row mb-3">
+            <div class="col-md-6 d-flex align-items-center">
+                <button class="btn email-button me-2">
+                    <i class="fas fa-envelope me-1"></i> إرسال تذكير
+                </button>
+                <button class="btn delete-button">
+                    <i class="fas fa-trash-alt me-1"></i> حذف المحدد
+                </button>
+            </div>
+            <div class="col-md-6 d-flex justify-content-md-end">
+                <div class="position-relative me-2">
+                    <input type="text" class="form-control search-box" placeholder="بحث..." aria-label="Search">
+                    <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                </div>
+                <button class="btn filter-button">
+                    <i class="fas fa-filter me-1"></i> تصفية متقدمة
+                </button>
+            </div>
+        </div>
+
+        <!-- Appointments Table -->
+        <div class="table-container mb-3">
+            <table class="table appointments-table mb-0">
+                <thead>
+                    <tr>
+                        <th class="checkbox-column">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="selectAll">
+                            </div>
+                        </th>
+                        <th>المريض</th>
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>نوع الزيارة</th>
+                        <th>الحالة</th>
+                        <th class="actions-column">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="/api/placeholder/40/40" class="avatar me-2" alt="صورة المريض">
+                                <div>
+                                    <p class="patient-name">سارة أحمد</p>
+                                    <p class="patient-id">PAT-2025-001#</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>17 أبريل 2025</td>
+                        <td>09:30 ص</td>
+                        <td>فحص عام</td>
+                        <td>
+                            <span class="badge-confirmed">مؤكد</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <button class="btn btn-icon edit me-1">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-icon delete">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="/api/placeholder/40/40" class="avatar me-2" alt="صورة المريض">
+                                <div>
+                                    <p class="patient-name">محمد خالد</p>
+                                    <p class="patient-id">PAT-2025-002#</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>17 أبريل 2025</td>
+                        <td>10:00 ص</td>
+                        <td>متابعة</td>
+                        <td>
+                            <span class="badge-waiting">في الانتظار</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <button class="btn btn-icon edit me-1">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-icon delete">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="row">
+            <div class="col-md-6">
+                <p class="page-info">عرض 1-10 من 45 موعد</p>
+            </div>
+            <div class="col-md-6">
+                <nav aria-label="Page navigation" class="float-md-end">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo; السابق</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">التالي &raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
