@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,71 +17,71 @@
             --color-dark: #73b3b2;
             --color-darkest: #3c979f;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--color-lightest);
         }
-        
+
         .navbar {
             background-color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             padding: 0.75rem 0;
         }
-        
+
         .navbar-brand {
             color: var(--color-darkest);
             font-weight: 600;
             font-size: 1.5rem;
         }
-        
+
         .nav-link {
             color: #495057;
             font-weight: 500;
             margin: 0 0.5rem;
         }
-        
+
         .navbar-toggler {
             border: none;
             padding: 0.5rem;
         }
-        
+
         .navbar-toggler:focus {
             box-shadow: none;
         }
-        
+
         .hero-section {
             background: linear-gradient(to bottom, var(--color-lightest) 0%, var(--color-light) 100%);
             padding: 4rem 0 2rem;
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-content h1 {
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 1.5rem;
         }
-        
+
         .hero-content p {
             color: #6c757d;
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
-        
+
         .clinic-image {
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
         }
-        
+
         .clinic-image img {
             width: 100%;
             height: auto;
             object-fit: cover;
         }
-        
+
         .cta-btn {
             background-color: var(--color-darkest);
             color: white;
@@ -90,18 +91,18 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-        
+
         .cta-btn:hover {
             background-color: #34868d;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(60, 151, 159, 0.3);
         }
-        
+
         .doctor-profile {
             background-color: var(--color-light);
             padding: 3rem 0;
         }
-        
+
         .doctor-image {
             width: 250px;
             height: 250px;
@@ -111,38 +112,38 @@
             border: 8px solid white;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .doctor-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .doctor-info h2 {
             color: #2c3e50;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-        
+
         .doctor-info h4 {
             color: var(--color-darkest);
             font-weight: 600;
             margin-bottom: 1.5rem;
         }
-        
+
         .doctor-info p {
             color: #6c757d;
             margin-bottom: 1.5rem;
             line-height: 1.6;
         }
-        
+
         .badge-container {
             display: flex;
             gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
         }
-        
+
         .custom-badge {
             display: flex;
             align-items: center;
@@ -153,7 +154,7 @@
             font-weight: 500;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
-        
+
         .custom-badge i {
             margin-left: 0.5rem;
             color: var(--color-darkest);
@@ -162,13 +163,13 @@
         .feature-section {
             padding: 4rem 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
         }
-        
+
         .section-title h2 {
             font-weight: 700;
             color: #2c3e50;
@@ -176,7 +177,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -188,29 +189,232 @@
             z-index: -1;
             border-radius: 5px;
         }
-        
+
         @media (max-width: 991.98px) {
             .hero-section {
                 padding: 3rem 0 2rem;
                 text-align: center;
             }
-            
+
             .clinic-image {
                 margin-top: 2rem;
             }
-            
+
             .doctor-image {
                 width: 200px;
                 height: 200px;
             }
         }
+
+        /*Contact Us Styling*/
+        .page-header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .contact-form-card {
+            background-color: var(--color-medium);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(60, 151, 159, 0.25);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: var(--color-darkest);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 6px;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #34868d;
+        }
+
+        .contact-info-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
+        }
+
+        .contact-info-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .contact-info-item .icon {
+            margin-left: 1rem;
+            color: var(--color-darkest);
+            font-size: 1.25rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .contact-info-text {
+            text-align: right;
+        }
+
+        .social-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            color: var(--color-darkest);
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .social-icon:hover {
+            color: #34868d;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-card {
+                margin-top: 2rem;
+            }
+        }
+
+        /*Modal Styling*/
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.25rem;
+            text-align: center;
+        }
+
+        .calendar-grid>div {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .calendar-grid .today {
+            font-weight: 700;
+            color: #3c979f;
+        }
+
+        .calendar-grid .selected {
+            background-color: #aecfd0;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .time-slot {
+            background-color: #aecfd0;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .time-slot:hover {
+            background-color: #73b3b2;
+            color: white;
+        }
+
+        .payment-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .payment-option.selected {
+            border-color: #3c979f;
+            background-color: #deebec;
+        }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">عيادة الشفاء</a>
+            <a class="navbar-brand" href="#">الملف الشخصي</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -218,12 +422,6 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">خدماتنا</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">الأطباء</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">حجز موعد</a>
@@ -235,65 +433,156 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <h1>رعاية صحية متميزة بين يديك</h1>
-                    <p>نقدم خدمات طبية متكاملة بأحدث التقنيات وأفضل الكفاءات الطبية</p>
-                    <button class="cta-btn">احجز موعدك الآن</button>
+                    <div class="doctor-info ">
+                        <h2> د.اشتيوي أبو زايد</h2>
+                        <h4>استشاري الطب العام والباطنة</h4>
+                        <p>خبرة تزيد عن 15 عاماً في مجال الطب العام والباطنة. يعمل في عيادات عالمية من أجل خدمات الصحية
+                            المثلى.</p>
+                    </div>
+                    <div class="doctor-image">
+                        <img src="https://scontent.famm10-1.fna.fbcdn.net/v/t39.30808-6/481056437_3760030710884220_3804395651611651775_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG07mvtZI7yyp20fUT8gqBEyNYHdk45CBvI1gd2TjkIG8WMcdNexTfyEjwCbECWcuSDSBkJfX-RDV-byhUoglUR&_nc_ohc=1e7KGfKHOCQQ7kNvwGJB6Uz&_nc_oc=AdkgudqXki0JacJHddZ9dWzXseVnjcWgGKsVi1DXbV57i8UF1O9zBDPd7wbMUF2VxGg&_nc_zt=23&_nc_ht=scontent.famm10-1.fna&_nc_gid=L6yvHXuse0UXs-JxM1FwBg&oh=00_AfGOwxKfoEydNgzvwKZuoUFTiXfCIaL0MAlm22Feq72m9Q&oe=68095069" alt="صورة الدكتور">
+                    </div>
+
+                    <button type="button" class="cta-btn" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                        حجز موعد
+                    </button>
                 </div>
                 <div class="col-lg-6">
                     <div class="clinic-image">
-                        <img src="https://placehold.co/800x500/aecfd0/fff?text=عيادة+الشفاء" alt="عيادة الشفاء">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d211.7740250704349!2d35.928474775587624!3d31.86896288234947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sjo!4v1745043635692!5m2!1sen!2sjo"
+                            width="650" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Doctor Profile Section -->
-    <section class="doctor-profile">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 text-center">
-                    <div class="doctor-image">
-                        <img src="https://placehold.co/400x400/aecfd0/fff?text=د.+أحمد" alt="صورة الدكتور">
-                    </div>
+    <!-- Modal Section (Optional) -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true"
+        dir="rtl">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">حجز موعد</h5>
+                    <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="col-lg-7">
-                    <div class="doctor-info text-center text-lg-end">
-                        <h2>د. أحمد محمد</h2>
-                        <h4>استشاري الطب العام والباطنة</h4>
-                        <p>خبرة تزيد عن 15 عاماً في مجال الطب العام والباطنة. يعمل في عيادات عالمية من أجل خدمات الصحية المثلى.</p>
-                        
-                        <div class="badge-container">
-                            <div class="custom-badge">
-                                <span>بيئة مريحة</span>
-                                <i class="fa-solid fa-heart-pulse"></i>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Calendar Column -->
+                        <div class="col-md-8">
+                            <div class="card shadow-sm mb-3">
+                                <div class="card-body">
+                                    <!-- Calendar Header -->
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <button type="button" class="btn btn-link p-0 text-decoration-none">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                        </button>
+                                        <h4 class="fw-bold m-0">فبراير 2025</h4>
+                                        <button type="button" class="btn btn-link p-0 text-decoration-none">
+                                            <i class="fa-solid fa-chevron-left"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Calendar Grid -->
+                                    <div class="calendar-grid mb-3">
+                                        <!-- Days Header -->
+                                        <div>س</div>
+                                        <div>ج</div>
+                                        <div>خ</div>
+                                        <div>ر</div>
+                                        <div>ث</div>
+                                        <div>ن</div>
+                                        <div>ح</div>
+
+                                        <!-- Calendar Days -->
+                                        <div class="text-muted">30</div>
+                                        <div class="text-muted">31</div>
+                                        <div class="today">1</div>
+                                        <div>2</div>
+                                        <div>3</div>
+                                        <div class="selected">4</div>
+                                        <div>5</div>
+                                    </div>
+
+                                    <!-- Time Slots -->
+                                    <h6 class="fw-bold">الأوقات المتاحة:</h6>
+                                    <div class="time-slots">
+                                        <button class="time-slot">9:00</button>
+                                        <button class="time-slot">9:30</button>
+                                        <button class="time-slot">10:00</button>
+                                        <button class="time-slot">10:30</button>
+                                        <button class="time-slot">11:00</button>
+                                        <button class="time-slot">11:30</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="custom-badge">
-                                <span>بطاقة الفحص كاملة</span>
-                                <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+
+                        <!-- Booking Details Column -->
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-white">
+                                    <h5 class="card-title fw-bold m-0">تفاصيل الحجز</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">سبب الزيارة:</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">المدة المتوقعة:</label>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center p-2 bg-light rounded">
+                                            <div>30 دقيقة</div>
+                                            <i class="fa-regular fa-clock"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">طريقة الدفع:</label>
+
+                                        <div class="payment-option selected">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <div>بطاقة الائتمان</div>
+                                            <i class="fa-solid fa-credit-card"></i>
+                                        </div>
+
+                                        <div class="payment-option">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <div>Apple Pay</div>
+                                            <i class="fa-brands fa-apple-pay"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white border-0">
+                                    <button class="btn btn-primary w-100">تأكيد الحجز</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
+
     <!-- Features Section (Optional) -->
     <section class="feature-section">
         <div class="container">
             <div class="section-title">
-                <h2>خدماتنا المميزة</h2>
+                <h2>خدمات العيادة</h2>
             </div>
-            
+
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-6 mb-6">
                     <div class="card border-0 h-100 p-4 text-center" style="background-color: var(--color-lightest);">
                         <div class="text-center mb-3">
                             <i class="fa-solid fa-stethoscope fa-3x" style="color: var(--color-darkest);"></i>
@@ -302,18 +591,8 @@
                         <p class="card-text">نقدم فحوصات طبية شاملة باستخدام أحدث التقنيات والأجهزة الطبية</p>
                     </div>
                 </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card border-0 h-100 p-4 text-center" style="background-color: var(--color-lightest);">
-                        <div class="text-center mb-3">
-                            <i class="fa-solid fa-user-doctor fa-3x" style="color: var(--color-darkest);"></i>
-                        </div>
-                        <h4 class="card-title mb-3">طاقم طبي متميز</h4>
-                        <p class="card-text">يضم فريقنا نخبة من الأطباء والاستشاريين ذوي الخبرة العالية</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
+
+                <div class="col-md-6 mb-6">
                     <div class="card border-0 h-100 p-4 text-center" style="background-color: var(--color-lightest);">
                         <div class="text-center mb-3">
                             <i class="fa-solid fa-calendar-check fa-3x" style="color: var(--color-darkest);"></i>
@@ -326,7 +605,89 @@
         </div>
     </section>
 
+    <div class="contact-container">
+        <header class="page-header">
+            <h2>تواصل معنا</h2>
+        </header>
+        <div class="row">
+            <!-- Contact Form Column -->
+            <div class="col-md-6">
+                <div class="contact-form-card">
+                    <form>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">الموضوع</label>
+                            <input type="text" class="form-control" id="subject">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">الرسالة</label>
+                            <textarea class="form-control" id="message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info Column -->
+            <div class="col-md-6">
+                <div class="contact-info-card">
+                    <h4 class="contact-info-title">معلومات الاتصال</h4>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-text">
+                            <div>+966 123 456 789</div>
+                            <div class="text-muted">من الأحد إلى الخميس • الساعة 9 - 6 مساءً</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-text">
+                            <div>info@yourclinic.com</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-text">
+                            <div>شارع الشهيد، الرياض، المملكة العربية السعودية</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Section -->
+                    <h5 class="social-title">تابعنا على</h5>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
