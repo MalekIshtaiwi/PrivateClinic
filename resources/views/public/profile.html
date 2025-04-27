@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-lightest: #deebec;
+            --color-light: #bed9dd;
+            --color-medium: #aecfd0;
+            --color-dark: #73b3b2;
+            --color-darkest: #3c979f;
+        }
+        
+        body {
+            background-color: var(--color-lightest);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 2rem;
+        }
+        
+        .header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: none;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 1rem 1.5rem;
+            background-color: white;
+            border-bottom: 1px solid #f1f1f1;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 1rem;
+        }
+        
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .profile-id {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+            text-align: right;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            background-color: white;
+        }
+        
+        .form-control[readonly] {
+            background-color: #f8f9fa;
+        }
+        
+        .verify-button {
+            background-color: var(--color-dark);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .verify-button:hover {
+            background-color: var(--color-darkest);
+        }
+        
+        .input-with-button {
+            display: flex;
+            align-items: center;
+        }
+        
+        .input-with-button .form-control {
+            border-radius: 6px 0 0 6px;
+            border-right: none;
+        }
+        
+        .input-with-button .verify-button {
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .membership-status {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--color-lightest);
+            border-radius: 8px;
+        }
+        
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+        }
+        
+        .status-text {
+            font-weight: 500;
+            color: #343a40;
+        }
+        
+        .membership-date {
+            margin-right: auto;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .health-metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .health-metric:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            font-weight: 600;
+            color: #343a40;
+        }
+        
+        .metric-value {
+            color: #343a40;
+        }
+        
+        .positive-value {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .expandable-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+        }
+        
+        .expandable-item:last-child {
+            border-bottom: none;
+        }
+        
+        .expandable-item-icon {
+            margin-left: 1rem;
+            color: var(--color-dark);
+            font-size: 1.1rem;
+        }
+        
+        .expandable-item-title {
+            font-weight: 500;
+            color: #343a40;
+        }
+        
+        .chevron-icon {
+            color: #adb5bd;
+            transition: transform 0.2s;
+        }
+        
+        @media (max-width: 576px) {
+            .profile-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="back-button">
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <h4 class="page-title">الملف الشخصي</h4>
+    </header>
+    
+    <div class="profile-container">
+        <!-- Personal Information Card -->
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="https://placehold.co/150x150/aecfd0/fff?text=أحمد" alt="صورة الملف الشخصي">
+                    </div>
+                    <div>
+                        <h5 class="profile-name">أحمد محمد</h5>
+                        <div class="profile-id">ID: 123456</div>
+                    </div>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">الاسم الكامل</label>
+                        <input type="text" class="form-control" value="أحمد محمد" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" value="ahmed@example.com" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">رقم الهاتف</label>
+                        <div class="input-with-button">
+                            <input type="tel" class="form-control" value="+966 50 123 4567" readonly>
+                            <button class="verify-button">تحقق</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Membership Status Card -->
+        <div class="card">
+            <div class="card-header">
+                حالة العضوية
+            </div>
+            <div class="card-body">
+                <div class="membership-status">
+                    <div class="status-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div class="status-text">عضوية نشطة</div>
+                    <div class="membership-date">تاريخ التجديد: 15 مارس 2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Health Profile Card -->
+        <div class="card">
+            <div class="card-header">
+                الملف الصحي
+            </div>
+            <div class="card-body">
+                <div class="health-metric">
+                    <div class="metric-label">فصيلة الدم</div>
+                    <div class="metric-value positive-value">A+</div>
+                </div>
+                
+                <div class="health-metric">
+                    <div class="metric-label">الوزن</div>
+                    <div class="metric-value">75 كجم</div>
+                </div>
+                
+                <div class="health-metric">
+                    <div class="metric-label">الطول</div>
+                    <div class="metric-value">175 سم</div>
+                </div>
+                
+                <div class="health-metric">
+                    <div class="metric-label">العمر</div>
+                    <div class="metric-value">35 سنة</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Medical Records Card -->
+        <div class="card">
+            <div class="expandable-item">
+                <div class="d-flex align-items-center">
+                    <i class="fa-regular fa-clipboard expandable-item-icon"></i>
+                    <span class="expandable-item-title">سجل الزيارات</span>
+                </div>
+                <i class="fa-solid fa-chevron-left chevron-icon"></i>
+            </div>
+            
+            <div class="expandable-item">
+                <div class="d-flex align-items-center">
+                    <i class="fa-regular fa-file-lines expandable-item-icon"></i>
+                    <span class="expandable-item-title">التقارير الطبية</span>
+                </div>
+                <i class="fa-solid fa-chevron-left chevron-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
