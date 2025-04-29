@@ -3,313 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - منصة الرعاية الصحية</title>
-    <!-- Bootstrap RTL CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --color-lightest: #deebec;
-            --color-light: #bed9dd;
-            --color-medium: #aecfd0;
-            --color-dark: #73b3b2;
-            --color-darkest: #3c979f;
-        }
-
-        body {
-            background-color: var(--color-lightest);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .login-container {
-            width: 100%;
-            max-width: 900px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            display: flex;
-        }
-
-        .login-form {
-            flex: 1;
-            padding: 2.5rem;
-            position: relative;
-        }
-
-        .login-sidebar {
-            flex: 0.8;
-            background-color: var(--color-medium);
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .step {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--color-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin: 0 0.75rem;
-            position: relative;
-        }
-
-        .step.active {
-            background-color: var(--color-darkest);
-        }
-
-        .step-label {
-            position: absolute;
-            top: 45px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            color: #6c757d;
-        }
-
-        .step::after {
-            content: '';
-            position: absolute;
-            right: 40px;
-            width: 40px;
-            height: 2px;
-            background-color: var(--color-light);
-        }
-
-        .step:first-child::after {
-            display: none;
-        }
-
-        .login-heading {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .login-heading h3 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .login-heading p {
-            color: #6c757d;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: #495057;
-        }
-
-        .form-control {
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-        }
-
-        .form-control:focus {
-            border-color: var(--color-dark);
-            box-shadow: 0 0 0 0.2rem rgba(60, 151, 159, 0.25);
-        }
-
-        .btn-primary {
-            background-color: var(--color-darkest);
-            border-color: var(--color-darkest);
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .btn-primary:hover {
-            background-color: #34868d;
-            border-color: #34868d;
-        }
-
-        .security-note {
-            background-color: var(--color-lightest);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .security-note i {
-            color: var(--color-darkest);
-            font-size: 1.2rem;
-            margin-left: 0.75rem;
-        }
-
-        .help-text {
-            text-align: center;
-            margin-top: 2rem;
-            color: #6c757d;
-        }
-
-        .help-link {
-            color: var(--color-darkest);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .help-link:hover {
-            text-decoration: underline;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            text-align: right;
-        }
-
-        .feature-item i {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 1rem;
-            font-size: 1rem;
-        }
-
-        .feature-item h5 {
-            margin-bottom: 0;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .sidebar-logo {
-            margin-bottom: 2.5rem;
-            color: white;
-        }
-
-        .sidebar-logo i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-logo h3 {
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .login-container {
-                flex-direction: column;
-            }
-
-            .login-sidebar {
-                padding: 2rem 1rem;
-            }
-
-            .steps {
-                margin-top: 0.5rem;
-            }
-        }
-    </style>
+    <title>بوابة الطبيب - تسجيل الدخول</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="{{ asset('css/admin/login.css') }}">
 </head>
 <body>
-    <div class="login-container">
-        <!-- Login Form Side -->
-        <div class="login-form">
-            <!-- Steps -->
-            <div class="steps">
-                <div class="step">
-                    <i class="fa-solid fa-user-plus"></i>
-                    <div class="step-label">التسجيل</div>
-                </div>
-                <div class="step">
-                    <i class="fa-solid fa-check"></i>
-                    <div class="step-label">التحقق</div>
-                </div>
-                <div class="step active">
-                    <i class="fa-solid fa-1"></i>
-                    <div class="step-label">رقم الهاتف</div>
-                </div>
-            </div>
-
-            <!-- Login Form Heading -->
-            <div class="login-heading">
-                <h3>تسجيل الدخول</h3>
-                <p>أدخل رقم هاتفك للمتابعة</p>
-            </div>
-
-            <!-- Phone Number Form -->
-            <form>
-                <div class="mb-4">
-                    <label for="phone" class="form-label">رقم الهاتف</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="05XXXXXXXX" value="05XXXX9668" dir="ltr">
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">إرسال رمز التحقق</button>
-            </form>
-
-            <!-- Security Note -->
-            <div class="security-note">
-                <div>نحن نحافظ على خصوصية بياناتك وأمنها وفقاً لأعلى معايير الأمان العالمية</div>
-                <i class="fa-solid fa-shield-halved"></i>
-            </div>
-
-            <!-- Help Text -->
-            <div class="help-text">
-                <p>واجهت مشكلة في التسجيل؟ <a href="#" class="help-link">تواصل مع الدعم الفني</a></p>
-            </div>
-        </div>
-
-        <!-- Sidebar -->
-        <div class="login-sidebar">
-            <!-- Logo -->
-            <div class="sidebar-logo">
-                <i class="fa-solid fa-hospital"></i>
-                <h3>منصة الرعاية الصحية</h3>
-            </div>
-
-            <!-- Features -->
-            <div class="features">
-                <div class="feature-item">
-                    <div>
-                        <h5>حجز المواعيد الطبية بسهولة وسرعة</h5>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="login-card">
+                    <div class="clinic-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M7.5 2a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 .5-.5M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+                        </svg>
                     </div>
-                    <i class="fa-solid fa-calendar-check"></i>
-                </div>
+                    <h1>بوابة الطبيب</h1>
+                    <p>تسجيل الدخول إلى نظام إدارة العيادة</p>
 
-                <div class="feature-item">
-                    <div>
-                        <h5>تواصل مباشر مع أفضل الأطباء</h5>
-                    </div>
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">بريدك الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                        </div>
 
-                <div class="feature-item">
-                    <div>
-                        <h5>سجلك الطبي في مكان واحد</h5>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">كلمة المرور</label>
+                            <input type="password" class="form-control" id="password" placeholder="أدخل كلمة المرور" required>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember">
+                                <label class="form-check-label" for="remember">تذكرني</label>
+                            </div>
+                            <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left ms-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+                                <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                            </svg>
+                            تسجيل الدخول
+                        </button>
+                    </form>
+
+                    <div class="security-note">
+                        جميع البيانات مشفرة وفقًا لمعايير الأمان
                     </div>
-                    <i class="fa-solid fa-notes-medical"></i>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle (Popper included) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

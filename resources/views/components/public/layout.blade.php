@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
         {{ $landing_css ?? '' }}
         {{ $appointments_css ?? '' }}
+        {{ $appointment_confirm_css ?? '' }}
     </head>
 
     <body>

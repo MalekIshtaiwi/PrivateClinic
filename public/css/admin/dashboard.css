@@ -1,0 +1,138 @@
+
+.stats-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stats-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.stats-icon.patients {
+    background-color: var(--color-dark);
+}
+
+.stats-icon.appointments {
+    background-color: var(--color-primary);
+}
+
+.stats-icon.today {
+    background-color: var(--color-medium);
+}
+
+.card-title {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.card-value {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.action-card {
+    background-color: var(--color-lightest);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.action-card:hover {
+    background-color: var(--color-light);
+    transform: translateY(-3px);
+}
+
+.action-icon {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.action-text {
+    font-size: 0.9rem;
+    color: #343a40;
+}
+
+.schedule-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.schedule-title {
+    color: #343a40;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.appointment-item {
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+}
+
+.appointment-confirmed {
+    background-color: #d1e7dd;
+}
+
+.appointment-waiting {
+    background-color: #fff3cd;
+}
+
+.appointment-time {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.appointment-name {
+    font-weight: bold;
+}
+
+.appointment-type {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.add-appointment-btn {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.add-appointment-btn:hover {
+    background-color: var(--color-dark);
+    color: white;
+}
+
+.badge-confirmed {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.badge-waiting {
+    background-color: #ffc107;
+    color: #212529;
+}
