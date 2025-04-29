@@ -1,0 +1,293 @@
+
+.hero-section {
+    background: linear-gradient(to bottom, var(--color-lightest) 0%, var(--color-light) 100%);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content h1 {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.clinic-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.clinic-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.cta-btn {
+    background-color: var(--color-darkest);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #34868d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(60, 151, 159, 0.3);
+}
+
+.doctor-profile {
+    background-color: var(--color-light);
+    padding: 3rem 0;
+}
+
+.doctor-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 8px solid white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doctor-info h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.doctor-info h4 {
+    color: var(--color-darkest);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.doctor-info p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.badge-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.custom-badge {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    color: var(--color-darkest);
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.custom-badge i {
+    margin-left: 0.5rem;
+    color: var(--color-darkest);
+}
+
+.feature-section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title h2 {
+    font-weight: 700;
+    color: #2c3e50;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 10px;
+    background-color: var(--color-medium);
+    bottom: 0px;
+    right: 25%;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding: 3rem 0 2rem;
+        text-align: center;
+    }
+
+    .clinic-image {
+        margin-top: 2rem;
+    }
+
+    .doctor-image {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/*Contact Us Styling*/
+.page-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-form-card {
+    background-color: var(--color-medium);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(60, 151, 159, 0.25);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn-submit {
+    background-color: var(--color-darkest);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #34868d;
+}
+
+.contact-info-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+}
+
+.contact-info-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    justify-content: flex-end;
+}
+
+.contact-info-item .icon {
+    margin-left: 1rem;
+    color: var(--color-darkest);
+    font-size: 1.25rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.contact-info-text {
+    text-align: right;
+}
+
+.social-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    color: var(--color-darkest);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.social-icon:hover {
+    color: #34868d;
+}
+
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 200px;
+}
+
+.map-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .contact-info-card {
+        margin-top: 2rem;
+    }
+}

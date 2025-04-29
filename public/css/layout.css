@@ -1,0 +1,39 @@
+:root {
+    --color-lightest: #deebec;
+    --color-light: #bed9dd;
+    --color-medium: #aecfd0;
+    --color-dark: #73b3b2;
+    --color-darkest: #3c979f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-lightest);
+}
+
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand {
+    color: var(--color-darkest);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #495057;
+    font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
