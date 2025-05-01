@@ -8,6 +8,9 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
 });
+Route::get('/dashboard-appointments', function () {
+    return view('admin.appointments.index');
+});
 
 //user basic routes
 Route::get('/', function () {
