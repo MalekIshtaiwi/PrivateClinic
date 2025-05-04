@@ -1,7 +1,7 @@
 <x-public.layout>
-    <x-slot name="appointments_css">
-        <link rel="stylesheet" href="{{ asset('css/appointments.css') }}">
-    </x-slot name="appointments_css">
+    <x-slot name="appointment_css">
+        <link rel="stylesheet" href="{{ asset('css/appointment.css') }}">
+    </x-slot name="appointment_css">
 
 
     <!-- Header -->
