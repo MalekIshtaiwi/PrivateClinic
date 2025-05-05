@@ -11,6 +11,7 @@
 
     {{ $dashboard_css ?? '' }}
     {{ $appointments_css ?? '' }}
+    {{ $schedule_css ?? '' }}
 
 </head>
 
@@ -48,6 +49,7 @@
     </nav>
     {{ $slot }}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {{ $schedule_script ?? '' }}
 </body>
 
 </html>

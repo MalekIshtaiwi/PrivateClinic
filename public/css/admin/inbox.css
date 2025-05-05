@@ -1,0 +1,159 @@
+
+
+.container-fluid {
+    padding: 0;
+}
+
+.inbox-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inbox-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.inbox-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.message-list {
+    width: 30%;
+    border-left: 1px solid #eee;
+    background-color: white;
+    overflow-y: auto;
+}
+
+
+.message-item {
+    padding: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    position: relative;
+}
+
+.message-item.active {
+    background-color: var(--color-lightest);
+    border-right: 4px solid var(--color-primary);
+}
+
+.message-item:hover {
+    background-color: #f9f9f9;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-fit: cover;
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0; /* Ensures text-overflow works */
+}
+
+.message-sender {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3px;
+    font-size: 0.95rem;
+}
+
+.message-status {
+    color: #777;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+}
+
+.message-preview {
+    color: #666;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.message-details {
+    width: 70%;
+    background-color: var(--color-lightest);
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.sender-info {
+    display: flex;
+    align-items: start;
+}
+
+.sender-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-fit: cover;
+}
+
+.sender-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.message-body {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.message-text {
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+

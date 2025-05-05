@@ -12,17 +12,33 @@ Route::get('/dashboard-appointments', function () {
     return view('admin.appointments.index');
 });
 
+Route::get('/admin-schedule', function () {
+    return view('admin.schedule.index');
+});
+
 //user basic routes
 Route::get('/', function () {
     return view('public.landing');
 });
-Route::get('/appointments', function () {
+Route::get('/book-appointment', function () {
     return view('public.appointment.index');
+})->name('appointment');
+
+Route::get('/appointment-confirmed', function () {
+    return view('public.appointment.confirm');
+})->name('appointment_confirm');
+
+Route::get('/appointments', function () {
+    return view('public.appointments.index');
 })->name('appointments');
 
-Route::get('/appointments-confirm', function () {
-    return view('public.appointment.confirm');
-})->name('appointments_confirm');
+Route::get('/profile', function () {
+    return view('public.profile.index');
+})->name('profile');
+
+Route::get('/patients', function () {
+    return view('public.patients.index');
+})->name('patients');
 
 Route::get('/login', function () {
     return view('public.auth.login');
