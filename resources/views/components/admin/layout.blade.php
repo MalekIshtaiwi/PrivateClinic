@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                عيادة الشفاء
+                عيادة د.اشتيوي
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
@@ -33,10 +33,13 @@
                         <a class="nav-link" href="#">المرضى</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">المواعيد</a>
+                        <a class="nav-link" href="{{ route('appointments') }}">المواعيد</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">السجلات الطبية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('schedule') }}">الجدول الإسبوعي</a>
                     </li>
                 </ul>
                 <form class="d-flex">

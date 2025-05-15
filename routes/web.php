@@ -1,13 +1,22 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth;
+use App\Http\Controllers\Auth as UserAuth;
+
 use Illuminate\Support\Facades\Route;
-//admin basic routes
+
+//Admin Routes
+
+//Auth Routes
+Route::get('/auth',[Auth::class,'index']);
+
+Route::get('/auth',[Auth::class,'index']);
+
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
-Route::get('/dashboard-login', function () {
-    return view('admin.auth.login');
-});
+
 Route::get('/dashboard-appointments', function () {
     return view('admin.appointments.index');
 });
@@ -15,6 +24,14 @@ Route::get('/dashboard-appointments', function () {
 Route::get('/admin-schedule', function () {
     return view('admin.schedule.index');
 });
+
+Route::get('/admin-appointments', function () {
+    return view('admin.appointments.index');
+})->name('appointments');
+
+Route::get('/admin-schedule', function () {
+    return view('admin.schedule.index');
+})->name('schedule');
 
 //user basic routes
 Route::get('/', function () {

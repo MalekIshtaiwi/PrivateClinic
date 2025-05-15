@@ -9,7 +9,7 @@
                 <!-- Sidebar -->
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="stats-card">
-                        <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center mb-3 gap-2">
                             <i class="far fa-calendar ms-2" style="color: var(--header);"></i>
                             <h5 class="mb-0">نظرة عامة على الأسبوع</h5>
                         </div>

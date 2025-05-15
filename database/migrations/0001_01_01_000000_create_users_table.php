@@ -15,12 +15,9 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone')->unique();
-            $table->string('email')->unique()->nullable(); // optional email
-            $table->string('password')->nullable(); // only filled if email/password is used
-            $table->string('role')->default('patient'); // patient, doctor
-            $table->string('otp_code')->nullable();
-            $table->boolean('is_verified')->default(false); // for phone OTP
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->enum('role',['patient','doctor'])->default('patient');
             $table->timestamps();
         });
         Schema::create('password_reset_tokens', function (Blueprint $table) {
