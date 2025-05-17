@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
+            $table->date('date');
+            $table->time('time');
+            $table->enum('status',['booked','cancelled','done']);
             $table->timestamps();
+
+            $table->unique(['patient_id','date']);
+            $table->unique(['date','time']);
         });
     }
 

@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->enum('day_of_week',
+            ['sunday','monday','tuesday','wednesday','thursday','saturday']);
+            $table->boolean('is_active');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
         });
     }
 
