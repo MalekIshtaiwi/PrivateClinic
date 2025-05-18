@@ -13,22 +13,29 @@ class SessionController extends Controller
         return view('public.auth.login');
     }
 
-    public function store()
+    public function login()
     {
+
         $creds = request()->validate([
             'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
-            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$/',
+            'password' => 'required|string|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$/',
         ]);
         // you can provide the attempt with another boolean argument if you want to remember the user
         if (! Auth::attempt($creds)){
             throw ValidationException::withMessages([
-                'email' => 'wrong creds'
+                'error' => 'wrong creds'
             ]);
         }
 
         request()->session()->regenerate();
 
         //redirect to home page
+        return redirect('/')->with('success', 'Logged in successfully');
+    }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('success', 'Logged out successfully');
     }
 }

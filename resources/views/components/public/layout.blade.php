@@ -36,6 +36,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">تواصل معنا</a>
                         </li>
+                        <li class="nav-item">
+                            <form action="{{route('logout')}}" method="POST" class="d-inline">
+                                @csrf
+                                <button class="nav-link btn btn-link" type="submit">تسجيل الخروج</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

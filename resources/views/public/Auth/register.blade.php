@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
         body {
             background-color: var(--color-lightest);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
+            height: fit-content;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -227,6 +228,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <!-- Login Form Side -->
@@ -249,28 +251,54 @@
 
             <!-- Login Form Heading -->
             <div class="login-heading">
-                <h3>تسجيل الدخول</h3>
+                <h3>التسجيل</h3>
                 <p>أدخل رقم هاتفك للمتابعة</p>
             </div>
 
             <!-- Phone Number Form -->
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="email" class="form-label">الإيميل</label>
-                    <input name="email" type="email" class="form-control" id="email" placeholder="example@gmail.com" dir="ltr" value="{{ old('email') }}">
+                    <label for="name" class="form-label">الاسم الثلاثي</label>
+                    <input type="tel" class="form-control" name="name" id="name"
+                        placeholder="محمد بن عبدالله" value="" dir="rtl">
+                </div>
+                <div class="mb-4">
+                    <label for="age" class="form-label">العمر</label>
+                    <input type="tel" class="form-control" name="age" id="age" placeholder="25"
+                        value="" dir="rtl">
+                </div>
+                <div class="mb-4">
+                    <label for="gender" class="form-label"> الجنس</label>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="status" class="form-label">الحالة الاجتماعية</label>
+                    <select class="form-control" name="status" id="status">
+                        <option value="single">اعزب</option>
+                        <option value="married">متزوج</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">الايميل</label>
+                    <input type="email" class="form-control" id="email" placeholder="ahmad@example.com" name="email"
+                        dir="rtl">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">كلمة المرور</label>
-                    <input name="password" type="password" class="form-control" id="password" placeholder="********"  dir="ltr" value="{{ old('password') }}">
+                    <input type="password" class="form-control" name="password" id="phone" dir="rtl"
+                        placeholder="********">
                 </div>
-                <div>
-                    <p style="color: red;"> @error('error')
-                        {{ $message }}
+                <div class="mb-4">
+                    <label for="password_confirmation" class="form-label">تأكيد كلمة المرور</label>
+                    <input type="password" class="form-control" id="password" name="password_confirmation"  dir="rtl"
+                        placeholder="********">
+                </div>
 
-                    @enderror</p>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+                <button type="submit" class="btn btn-primary w-100">التسجيل</button>
             </form>
 
             <!-- Security Note -->
@@ -322,4 +350,5 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
