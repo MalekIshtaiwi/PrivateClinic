@@ -20,16 +20,46 @@ Route::post('/admin/login', [AdminSessionController::class, 'login'])->name('adm
 Route::post('/admin/logout', [AdminSessionController::class, 'logout'])->name('admin.logout')->middleware('doctor');
 
 //Dashboard Routes
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('doctor');
+Route::middleware('doctor')->group(function () {
+
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('doctor');
+
+
+});
+
 
 //Schedule Routes
-Route::get('/admin/schedule', [ScheduleController::class, 'index'])->name('admin.schedule');
+Route::middleware('doctor')->group(function () {
+
+    Route::get('/admin/schedule', [ScheduleController::class, 'index'])->name('admin.schedule');
+
+
+});
+
 //Appointments Routes
-Route::get('/admin/appointments', [AppointmentsController::class, 'index'])->name('admin.appointments');
+Route::middleware('doctor')->group(function () {
+
+    Route::get('/admin/appointments', [AppointmentsController::class, 'index'])->name('admin.appointments');
+
+
+});
+
 //Patients Routes
-Route::get('/admin/patients', [PatientsController::class, 'index'])->name('admin.patients');
+Route::middleware('doctor')->group(function () {
+
+    Route::get('/admin/patients', [PatientsController::class, 'index'])->name('admin.patients');
+
+
+});
+
 //Medical Records Routes
-Route::get('/admin/records', [MedicalRecordsController::class, 'index'])->name('admin.records');
+Route::middleware('doctor')->group(function () {
+
+    Route::get('/admin/records', [MedicalRecordsController::class, 'index'])->name('admin.records');
+
+
+});
+
 
 
 
@@ -48,16 +78,29 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionController::class, 'login'])->name('login');
 });
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 });
 
 
+//personal appointment routes
+Route::middleware('auth')->group(function () {
 
-Route::get('/appointments', function () {
-    return view('public.appointments.index');
+    Route::get('/appointments', function () {
+        return view('public.appointments.index');
+    });
+
+
 });
-Route::get('/appointment', function () {
-    return view('public.appointment.index');
+
+//book appointment routes
+Route::middleware('auth')->group(function () {
+
+    Route::get('/appointment', function () {
+        return view('public.appointment.index');
+    });
+
+
 });
+
 
