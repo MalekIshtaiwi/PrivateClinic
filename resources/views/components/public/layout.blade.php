@@ -34,10 +34,13 @@
                             <a class="nav-link active" href="/">الرئيسية</a>
                         </li>
                         <li class="nav-item">
-                            <form action="{{route('logout')}}" method="POST" class="d-inline">
-                                @csrf
-                                <button class="nav-link btn btn-link" type="submit">تسجيل الخروج</button>
-                            </form>
+                            @auth
+                                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button class="nav-link btn btn-link" type="submit">تسجيل الخروج</button>
+                                </form>
+                            @endauth
+
                         </li>
                     </ul>
                 </div>
