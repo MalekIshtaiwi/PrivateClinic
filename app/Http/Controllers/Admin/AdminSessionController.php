@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AdminSessionController extends Controller
 {
@@ -26,18 +27,41 @@ class AdminSessionController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6']
         ]);
-        // Attempt to log the user in
+
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            // User with this email doesn't exist
+            return back()
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors([
+                    'email' => 'لا يوجد حساب مسجل بهذا البريد الإلكتروني.'
+                ]);
+        }
+
+        if ($user->role !== 'doctor') {
+            // User exists but is not a doctor
+            return back()
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors([
+                    'email' => 'هذا الحساب لا يملك صلاحيات الطبيب.'
+                ]);
+        }
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'doctor'])) {
             $request->session()->regenerate();
 
             // If successful, then redirect to admin dashboard
             return redirect('/admin/dashboard');
+        } else {
+            return back()
+            ->withInput($request->only('email', 'remember'))
+            ->withErrors([
+                'password'=> 'كلمة المرور غير صحيحة'
+            ]);
         }
 
 
-                return back()->withErrors([
-            'email' => 'بيانات الاعتماد هذه لا تتطابق مع سجلاتنا أو أنت لست طبيبًا.',
-        ])->onlyInput('email');
+
     }
 
     public function logout(Request $request)
@@ -46,8 +70,6 @@ class AdminSessionController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-
-
         $request->session()->regenerateToken();
 
         return redirect('/auth/login');
