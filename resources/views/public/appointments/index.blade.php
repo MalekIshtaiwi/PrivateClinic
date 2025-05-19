@@ -6,10 +6,6 @@
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="page-title">سجل المواعيد</h2>
-                    <button class="btn btn-new">
-                        <i class="fa-solid fa-plus"></i>
-                        موعد جديد
-                    </button>
                 </div>
             </div>
         </header>
@@ -17,33 +13,16 @@
         <div class="container">
             <!-- Filters and Search -->
             <div class="search-filter-container d-flex gap-3 align-items-center">
-                <div class="dropdown">
-                    <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        جميع الحالات
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">الكل</a></li>
-                        <li><a class="dropdown-item" href="#">قادم</a></li>
-                        <li><a class="dropdown-item" href="#">مكتمل</a></li>
-                        <li><a class="dropdown-item" href="#">ملغي</a></li>
-                    </ul>
-                </div>
 
                 <div class="dropdown">
                     <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        جميع الأطباء
-                    </button>
+                        اسم المريض                    </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">الكل</a></li>
                         <li><a class="dropdown-item" href="#">د. سارة خالد</a></li>
                         <li><a class="dropdown-item" href="#">د. أحمد محمد</a></li>
                         <li><a class="dropdown-item" href="#">د. ليلى عمر</a></li>
                     </ul>
-                </div>
-
-                <div class="position-relative flex-grow-1">
-                    <input type="text" class="search-input" placeholder="البحث عن موعد...">
-                    <i class="fa-solid fa-search search-icon"></i>
                 </div>
             </div>
 

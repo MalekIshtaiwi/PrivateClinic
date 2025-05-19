@@ -27,19 +27,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">الرئيسية</a>
+                        <a class="nav-link active" href="{{ route('admin.dashboard') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">المرضى</a>
+                        <a class="nav-link" href="{{ route('admin.patients') }}">المرضى</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('appointments') }}">المواعيد</a>
+                        <a class="nav-link" href="{{ route('admin.appointments') }}">المواعيد</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">السجلات الطبية</a>
+                        <a class="nav-link" href="{{ route('admin.records') }}">السجلات الطبية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('schedule') }}">الجدول الإسبوعي</a>
+                        <a class="nav-link" href="{{ route('admin.schedule') }}">الجدول الإسبوعي</a>
                     </li>
                 </ul>
                 <form class="d-flex">

@@ -281,7 +281,7 @@
 
             <!-- Help Text -->
             <div class="help-text">
-                <p>واجهت مشكلة في التسجيل؟ <a href="#" class="help-link">تواصل مع الدعم الفني</a></p>
+                <p>لا تملك حساب ؟<a href="{{ route('register') }}" class="help-link">التسجيل</a></p>
             </div>
         </div>
 

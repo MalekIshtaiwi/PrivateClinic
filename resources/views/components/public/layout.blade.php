@@ -24,7 +24,7 @@
     <body>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#">الملف الشخصي</a>
+                <a class="navbar-brand" href="/appointments">الملف الشخصي</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -32,9 +32,6 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="/">الرئيسية</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">تواصل معنا</a>
                         </li>
                         <li class="nav-item">
                             <form action="{{route('logout')}}" method="POST" class="d-inline">

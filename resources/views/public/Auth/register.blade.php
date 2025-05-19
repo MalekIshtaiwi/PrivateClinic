@@ -309,7 +309,7 @@
 
             <!-- Help Text -->
             <div class="help-text">
-                <p>واجهت مشكلة في التسجيل؟ <a href="#" class="help-link">تواصل مع الدعم الفني</a></p>
+                <p>مستخدم مسجل سابقا ؟<a href="#" class="help-link">تسجيل الدخول</a></p>
             </div>
         </div>
 

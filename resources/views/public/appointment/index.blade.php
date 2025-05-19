@@ -17,7 +17,7 @@
             <div class="col-md-8">
                 <div class="booking-card">
                     <div class="calendar-header">
-                        <div class="calendar-nav">
+                        <div class="calendar-nav hidden">
                             <button type="button"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                         <h4>فبراير 2025</h4>
@@ -69,6 +69,16 @@
                     </div>
 
                     <div class="booking-form">
+                        <div class="dropdown">
+                            <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                اسم المريض </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">الكل</a></li>
+                                <li><a class="dropdown-item" href="#">د. سارة خالد</a></li>
+                                <li><a class="dropdown-item" href="#">د. أحمد محمد</a></li>
+                                <li><a class="dropdown-item" href="#">د. ليلى عمر</a></li>
+                            </ul>
+                        </div>
                         <div class="form-group">
                             <label class="form-label">سبب الزيارة:</label>
                             <textarea class="form-control"></textarea>
@@ -82,29 +92,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">طريقة الدفع:</label>
 
-                            <div class="payment-option selected">
-                                <div class="locked-icon">
-                                    <i class="fa-solid fa-lock"></i>
-                                </div>
-                                <div>بطاقة الائتمان</div>
-                                <div class="payment-icon">
-                                    <i class="fa-solid fa-credit-card"></i>
-                                </div>
-                            </div>
-
-                            <div class="payment-option">
-                                <div class="locked-icon">
-                                    <i class="fa-solid fa-lock"></i>
-                                </div>
-                                <div>Apple Pay</div>
-                                <div class="payment-icon">
-                                    <i class="fa-brands fa-apple-pay"></i>
-                                </div>
-                            </div>
-                        </div>
 
                         <button class="btn btn-confirm">تأكيد الحجز</button>
                     </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
             $table->date('date');
             $table->time('time');
-            $table->enum('status',['booked','cancelled','done']);
+            $table->enum('status',['booked','cancelled','done'])->default('booked');
             $table->timestamps();
 
             $table->unique(['patient_id','date']);

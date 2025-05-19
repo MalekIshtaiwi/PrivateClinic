@@ -169,46 +169,23 @@ textarea.form-control {
     margin-bottom: 1rem;
 }
 
-.payment-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid #e9ecef;
+
+.filter-select {
+    background-color: white;
+    border: 1px solid #e2e8f0;
     border-radius: 6px;
-    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #4b5563;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
-.payment-option:hover {
+.filter-select:focus {
     border-color: var(--color-medium);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(174, 207, 208, 0.25);
 }
 
-.payment-option.selected {
-    border-color: var(--color-darkest);
-    background-color: var(--color-lightest);
-}
-
-.payment-icon {
-    color: #6c757d;
-    display: flex;
-    align-items: center;
-}
-
-.payment-icon i {
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-}
-
-.payment-option.selected .payment-icon {
-    color: var(--color-darkest);
-}
-
-.locked-icon {
-    color: var(--color-darkest);
-    margin-right: 0.5rem;
-}
 
 .btn-confirm {
     background-color: var(--color-darkest);
