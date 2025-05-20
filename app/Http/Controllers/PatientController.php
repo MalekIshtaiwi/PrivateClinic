@@ -19,7 +19,7 @@ class PatientController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'age' => 'nullable|integer|min:0',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:male,female,other',
             'status' => 'nullable|in:married,single,widowed',
         ]);
 
