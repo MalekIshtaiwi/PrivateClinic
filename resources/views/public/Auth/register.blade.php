@@ -264,7 +264,7 @@
                         placeholder="محمد بن عبدالله" value="" dir="rtl">
                 </div>
                 <div class="mb-4">
-                    <label for="age" class="form-label">العمر</label>
+                    <label for="age" class="form-label">العمر(اختياري)</label>
                     <input type="tel" class="form-control" name="age" id="age" placeholder="25"
                         value="" dir="rtl">
                 </div>
@@ -280,6 +280,7 @@
                     <select class="form-control" name="status" id="status">
                         <option value="single">اعزب</option>
                         <option value="married">متزوج</option>
+                        <option value="other">أفضل عدم الإجابة</option>
                     </select>
                 </div>
                 <div class="mb-4">

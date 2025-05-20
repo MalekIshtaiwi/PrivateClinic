@@ -1,11 +1,14 @@
 <?php
-
+/*Admin Controllers */
 use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MedicalRecordsController;
 use App\Http\Controllers\Admin\PatientsController;
 use App\Http\Controllers\Admin\ScheduleController;
+
+/*User Controllers */
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 
@@ -82,6 +85,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 });
 
+//Patients Routes
+Route::middleware('auth')->group( function () {
+   Route::resource('patients', PatientController::class)->except(['destroy','edit','create']);
+});
 
 //personal appointment routes
 Route::middleware('auth')->group(function () {

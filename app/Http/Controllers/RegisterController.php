@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
         $patient = request()->validate([
             'name' => 'required|string|min:3',
-            'age' => 'required|integer|min_digits:2',
+            'age' => 'nullable|integer|min_digits:2',
             'gender' => 'required', // you can make this an enum of both values
             'status' => 'required', // you can make this an enum of both values
         ]);
