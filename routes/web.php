@@ -35,6 +35,7 @@ Route::middleware('doctor')->group(function () {
 Route::middleware('doctor')->group(function () {
 
     Route::get('/admin/schedule', [ScheduleController::class, 'index'])->name('admin.schedule');
+    Route::put('/admin/schedule', [ScheduleController::class, 'update'])->name('admin.schedule.update');
 
 
 });

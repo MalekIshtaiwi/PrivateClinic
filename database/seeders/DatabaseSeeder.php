@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'doctor',
         ]);
 
+        $this->call(ScheduleSeeder::class);
 
     }
 }

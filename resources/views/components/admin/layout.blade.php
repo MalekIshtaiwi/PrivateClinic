@@ -45,6 +45,9 @@
                 <form class="d-flex">
                     <div class="position-relative">
                         <input class="form-control search-box" type="search" placeholder="بحث عن المريض..." aria-label="Search">
+                        <form action="{{ route('admin.logout') }}" method="POST">
+                            <button type="submit" class="nav-link">تسجيل الخروج</button>
+                        </form>
                     </div>
                 </form>
             </div>
