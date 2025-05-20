@@ -21,7 +21,8 @@
             <a class="navbar-brand" href="#">
                 عيادة د.اشتيوي
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,12 +43,13 @@
                         <a class="nav-link" href="{{ route('admin.schedule') }}">الجدول الإسبوعي</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form action="{{ route('admin.logout') }}" method="POST" class="d-flex">
+                    @csrf
                     <div class="position-relative">
-                        <input class="form-control search-box" type="search" placeholder="بحث عن المريض..." aria-label="Search">
-                        <form action="{{ route('admin.logout') }}" method="POST">
-                            <button type="submit" class="nav-link">تسجيل الخروج</button>
-                        </form>
+                        <input class="form-control search-box" type="search" placeholder="بحث عن المريض..."
+                            aria-label="Search">
+                        <button type="submit" class="nav-link">تسجيل الخروج</button>
+
                     </div>
                 </form>
             </div>
