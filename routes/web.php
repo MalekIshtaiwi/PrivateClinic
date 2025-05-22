@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
-
+use App\Http\Controllers\AppointmentsController as UserAppointmentsController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -87,28 +87,16 @@ Route::middleware('auth')->group(function () {
 });
 
 //Patients Routes
-Route::middleware('auth')->group( function () {
-   Route::resource('patients', PatientController::class)->except(['destroy','edit','create']);
+Route::middleware('auth')->group(function () {
+    Route::resource('patients', PatientController::class)->except(['destroy', 'edit', 'create']);
 });
 
 //personal appointment routes
-Route::middleware('auth')->group(function () {
-
-    Route::get('/appointments', function () {
-        return view('public.appointments.index');
-    });
 
 
-});
+    /*make a controller for this route the user sees the schedule there and interacts with the patient controller
+     and the appointments controller to book appointments and the appointments controller generates slots for the available
+     times and days based on the day and time of the user and prevents them from double booking
 
-//book appointment routes
-Route::middleware('auth')->group(function () {
-
-    Route::get('/appointment', function () {
-        return view('public.appointment.index');
-    });
-
-
-});
-
-
+    */
+    Route::get('/appointments', [UserAppointmentsController::class, 'index']);

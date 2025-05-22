@@ -1,126 +1,88 @@
 <x-public.layout>
-    <link rel="stylesheet" href="{{ asset('css/appointments.css') }}">
+    <x-slot name="appointment_css">
+        <link rel="stylesheet" href="{{ asset('css/appointment.css') }}">
+    </x-slot name="appointment_css">
 
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2 class="page-title">سجل المواعيد</h2>
-                </div>
-            </div>
-        </header>
 
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <!-- Filters and Search -->
-            <div class="search-filter-container d-flex gap-3 align-items-center">
+            <h3 class="text-center">حجز موعد</h3>
+        </div>
+    </header>
 
-                <div class="dropdown">
-                    <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        اسم المريض                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">الكل</a></li>
-                        <li><a class="dropdown-item" href="#">د. سارة خالد</a></li>
-                        <li><a class="dropdown-item" href="#">د. أحمد محمد</a></li>
-                        <li><a class="dropdown-item" href="#">د. ليلى عمر</a></li>
-                    </ul>
+    <div class="booking-container">
+        <div class="row">
+            <!-- Calendar Column -->
+            <div class="col-md-8">
+                <div class="booking-card">
+                    <div class="calendar-header" >
+
+                        <h4>فبراير 2025</h4>
+
+                    </div>
+
+                    <!-- Calendar Days Header -->
+                    <div class="calendar-grid">
+                        <!-- days -->
+                        <div class="calendar-day today">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day selected">الأحد</div>
+                        <div class="calendar-day">5</div>
+                    </div>
+
+                    <!-- Time Slots -->
+                    <h6 class="time-header">الأوقات المتاحة:</h6>
+                    <div class="time-slots">
+                        <button class="time-slot">9:00</button>
+                        <button class="time-slot">9:30</button>
+                        <button class="time-slot">10:00</button>
+                        <button class="time-slot">10:30</button>
+                        <button class="time-slot">11:00</button>
+                        <button class="time-slot">11:30</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Appointments List -->
-            <div class="appointments-list">
-                <!-- Appointment 1 -->
-                <div class="appointment-card">
-                    <div class="d-flex">
-                        <div class="calendar-icon-container blue-calendar">
-                            <i class="fa-solid fa-calendar-day"></i>
-                        </div>
-
-                        <div class="flex-grow-1">
-                            <div class="appointment-header">
-                                <div>
-                                    <h5 class="doctor-name">د. سارة خالد - طب عام</h5>
-                                    <div class="doctor-specialty">15 مارس 2025 - 10:30 صباحاً</div>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <span class="status-pill status-upcoming">قادم</span>
-                                    <div class="appointment-actions ms-2">
-                                        <button class="action-btn">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </button>
-                                        <button class="action-btn">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button class="view-details-btn">
-                                <i class="fa-solid fa-chevron-down"></i>
-                                عرض التفاصيل
-                            </button>
-                        </div>
+            <!-- Booking Details Column -->
+            <div class="col-md-4">
+                <div class="booking-card">
+                    <div class="booking-heading">
+                        <h5>تفاصيل الحجز</h5>
                     </div>
-                </div>
 
-                <!-- Appointment 2 -->
-                <div class="appointment-card">
-                    <div class="d-flex">
-                        <div class="calendar-icon-container green-calendar">
-                            <i class="fa-solid fa-calendar-day"></i>
+                    <div class="booking-form">
+                        <div class="dropdown">
+                            <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                اسم المريض </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">الكل</a></li>
+                                <li><a class="dropdown-item" href="#">د. سارة خالد</a></li>
+                                <li><a class="dropdown-item" href="#">د. أحمد محمد</a></li>
+                                <li><a class="dropdown-item" href="#">د. ليلى عمر</a></li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">سبب الزيارة:</label>
+                            <textarea class="form-control"></textarea>
                         </div>
 
-                        <div class="flex-grow-1">
-                            <div class="appointment-header">
-                                <div>
-                                    <h5 class="doctor-name">د. أحمد محمد - أسنان</h5>
-                                    <div class="doctor-specialty">10 مارس 2025 - 2:00 مساءً</div>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <span class="status-pill status-completed">مكتمل</span>
-                                    <div class="appointment-actions ms-2">
-                                        <button class="action-btn">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#" class="view-prescription-btn">
-                                عرض الوصفة الطبية
-                                <i class="fa-solid fa-file-prescription"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Appointment 3 -->
-                <div class="appointment-card">
-                    <div class="d-flex">
-                        <div class="calendar-icon-container red-calendar">
-                            <i class="fa-solid fa-calendar-day"></i>
-                        </div>
-
-                        <div class="flex-grow-1">
-                            <div class="appointment-header">
-                                <div>
-                                    <h5 class="doctor-name">د. ليلى عمر - جلدية</h5>
-                                    <div class="doctor-specialty">5 مارس 2025 - 11:15 صباحاً</div>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <span class="status-pill status-cancelled">ملغي</span>
-                                    <div class="appointment-actions ms-2">
-                                        <button class="action-btn">
-                                            <i class="fa-solid fa-rotate"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="form-group">
+                            <label class="form-label">المدة المتوقعة:</label>
+                            <div class="duration-display">
+                                <div>30 دقيقة</div>
+                                <i class="fa-regular fa-clock"></i>
                             </div>
                         </div>
+
+
+
+                        <button class="btn btn-confirm">تأكيد الحجز</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
 </x-public.layout>

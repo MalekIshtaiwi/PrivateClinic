@@ -4,6 +4,27 @@
     </x-slot name="landing_css">
 
     <!-- Hero Section -->
+    @if (session('message'))
+        <div id="flash-message"
+            style="
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            background-color: #FEE2E2; /* light red */
+            color: #B91C1C;           /* red text */
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(185, 28, 28, 0.3);
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            font-weight: 600;
+            font-family: Arial, sans-serif;
+        ">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -18,7 +39,7 @@
                         <img src="https://scontent.famm10-1.fna.fbcdn.net/v/t39.30808-6/481056437_3760030710884220_3804395651611651775_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG07mvtZI7yyp20fUT8gqBEyNYHdk45CBvI1gd2TjkIG8WMcdNexTfyEjwCbECWcuSDSBkJfX-RDV-byhUoglUR&_nc_ohc=1e7KGfKHOCQQ7kNvwGJB6Uz&_nc_oc=AdkgudqXki0JacJHddZ9dWzXseVnjcWgGKsVi1DXbV57i8UF1O9zBDPd7wbMUF2VxGg&_nc_zt=23&_nc_ht=scontent.famm10-1.fna&_nc_gid=L6yvHXuse0UXs-JxM1FwBg&oh=00_AfGOwxKfoEydNgzvwKZuoUFTiXfCIaL0MAlm22Feq72m9Q&oe=68095069"
                             alt="صورة الدكتور">
                     </div>
-                    <form action="/appointment" method="GET">
+                    <form action="/appointments" method="GET">
                         <button class="cta-btn" type="submit">
                             حجز موعد
                         </button>
@@ -148,5 +169,14 @@
             </div>
         </div>
     </div>
+    <script>
+        setTimeout(() => {
+            const msg = document.getElementById('flash-message');
+            if (msg) {
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 500); // Clean up after fade
+            }
+        }, 3000); // Fade out after 3 seconds
+    </script>
 
 </x-public.layout>
