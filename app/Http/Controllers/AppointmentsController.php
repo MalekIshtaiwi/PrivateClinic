@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
@@ -37,12 +38,15 @@ class AppointmentsController extends Controller
 
         $daysFromTodayArabic = collect($daysFromToday)->map(fn($day) => $arabicDays[$day] ?? $day);
         $todayArabic = $arabicDays[$today] ?? 'اليوم';
-
+        /* current user's patients*/
+        $user = Auth::user();
+        $patients = $user ? $user->patients : [];
         return view('public.appointments.index', [
             'daysFromToday' => $daysFromToday,
             'daysFromTodayArabic' => $daysFromTodayArabic,
             'todayArabic' => $todayArabic,
             'schedule' => $schedule,
+            'patients' => $patients,
         ]);
     }
 

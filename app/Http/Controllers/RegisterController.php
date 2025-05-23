@@ -31,13 +31,18 @@ class RegisterController extends Controller
             'gender' => 'required', // you can make this an enum of both values
             'status' => 'required', // you can make this an enum of both values
         ]);
-
         //when the user registers they provide data so that we create their first patient
-        $user = User::create($user);
+        if (!User::find($user['email'], 'email')) {
+            $user = User::create($user);
 
-        Patient::create($patient + [
-            'user_id' => $user->id,
-        ]);
+            Patient::Create($patient + [
+                'user_id' => $user->id,
+            ]);
+        } else {
+            session()->flash('message', 'المستخدم مسجل سابقا');
+            return redirect()->back() ?? '/';
+        }
+
 
         Auth::login($user);
 

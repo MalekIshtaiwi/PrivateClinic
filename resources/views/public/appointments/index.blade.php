@@ -55,10 +55,12 @@
                             <button class="filter-select dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                 اسم المريض </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">الكل</a></li>
-                                <li><a class="dropdown-item" href="#">د. سارة خالد</a></li>
-                                <li><a class="dropdown-item" href="#">د. أحمد محمد</a></li>
-                                <li><a class="dropdown-item" href="#">د. ليلى عمر</a></li>
+                                @forelse ($patients as $index => $patient)
+                                    <li><a class="dropdown-item" href="#">{{ $patient->name }}</a></li>
+                                @empty
+                                    يرجى تسجيل الدخول لحجز موعد
+                                @endforelse
+
                             </ul>
                         </div>
                         <div class="form-group">

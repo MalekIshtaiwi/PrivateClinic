@@ -230,6 +230,26 @@
 </head>
 
 <body>
+    @if (session('message'))
+        <div id="flash-message"
+            style="
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            background-color: #FEE2E2; /* light red */
+            color: #B91C1C;           /* red text */
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(185, 28, 28, 0.3);
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            font-weight: 600;
+            font-family: Arial, sans-serif;
+        ">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="login-container">
         <!-- Login Form Side -->
         <div class="login-form">
@@ -285,8 +305,8 @@
                 </div>
                 <div class="mb-4">
                     <label for="email" class="form-label">الايميل</label>
-                    <input type="email" class="form-control" id="email" placeholder="ahmad@example.com" name="email"
-                        dir="rtl">
+                    <input type="email" class="form-control" id="email" placeholder="ahmad@example.com"
+                        name="email" dir="rtl">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">كلمة المرور</label>
@@ -295,8 +315,8 @@
                 </div>
                 <div class="mb-4">
                     <label for="password_confirmation" class="form-label">تأكيد كلمة المرور</label>
-                    <input type="password" class="form-control" id="password" name="password_confirmation"  dir="rtl"
-                        placeholder="********">
+                    <input type="password" class="form-control" id="password" name="password_confirmation"
+                        dir="rtl" placeholder="********">
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">التسجيل</button>
@@ -349,6 +369,15 @@
     </div>
 
     <!-- Bootstrap JS Bundle -->
+    <script>
+        setTimeout(() => {
+            const msg = document.getElementById('flash-message');
+            if (msg) {
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 500); // Clean up after fade
+            }
+        }, 3000); // Fade out after 3 seconds
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
