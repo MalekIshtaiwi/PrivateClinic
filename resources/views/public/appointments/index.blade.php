@@ -10,6 +10,13 @@
             <h3 class="text-center">حجز موعد</h3>
         </div>
     </header>
+    @if (session('success'))
+        <div class="alert alert-success text-center">{{ session('success') }}</div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger text-center">{{ session('error') }}</div>
+    @endif
 
     <div class="booking-container">
         <div class="row">
@@ -50,12 +57,7 @@
                                 }
                             }
                         @endphp
-
-                        @forelse ($slots as $slot)
-                            <button class="time-slot" onclick="selectedTime()">{{ $slot }}</button>
-                        @empty
-                            <div class="text-red-500">لا توجد أوقات متاحة لليوم</div>
-                        @endforelse
+                        <div class="time-slots" id="time-slots-container"></div>
                     </div>
                 </div>
             </div>
@@ -67,22 +69,30 @@
                         <h5>تفاصيل الحجز</h5>
                     </div>
 
-                    <div class="booking-form">
+                    <form action="/appointments" method="POST" id="booking-form" class="booking-form">
+                        @csrf
+                        <input type="hidden" name="selected_day" id="selected_day_input">
+                        <input type="hidden" name="selected_time" id="selected_time_input">
 
                         <ul class="list-group">
-                            @forelse ($patients as $index => $patient)
-                                <li><a class="list-group-item active" href="#">{{ $patient->name }}</a></li>
+                            @forelse ($patients as $patient)
+                                <li>
+                                    <label>
+                                        <input type="radio" name="patient_id" value="{{ $patient->id }}" required>
+                                        {{ $patient->name }}
+                                    </label>
+                                </li>
+                            @empty
+                                يرجى تسجيل الدخول لحجز موعد
+                            @endforelse
                         </ul>
-                    @empty
-                        يرجى تسجيل الدخول لحجز موعد
-                        @endforelse
 
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label class="form-label">سبب الزيارة:</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" name="notes"></textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label class="form-label">المدة المتوقعة:</label>
                             <div class="duration-display">
                                 <div>30 دقيقة</div>
@@ -90,81 +100,39 @@
                             </div>
                         </div>
 
-
-
-                        <button class="btn btn-confirm">تأكيد الحجز</button>
-                    </div>
+                        <button type="submit" class="btn btn-confirm mt-2">تأكيد الحجز</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function getTodayDayKey() {
-            const jsDayIndex = new Date().getDay(); // 0=Sunday, ..., 6=Saturday
-            const mapping = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-            return mapping[jsDayIndex];
-        }
         const scheduleData = @json($schedule);
+        const bookedSlotsData = @json($bookedSlots);
+        const todayKey = '{{ $today }}';
 
-        function selectDay(dayKey) {
-            document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove('selected'));
-            const selectedElement = [...document.querySelectorAll('.calendar-day')]
-                .find(el => el.dataset.day === dayKey);
-            if (selectedElement) selectedElement.classList.add('selected');
-
-            const slotsContainer = document.getElementById('time-slots-container');
-            slotsContainer.innerHTML = '';
-
-            const slot = scheduleData[dayKey];
-
-            if (!slot) {
-                slotsContainer.innerHTML = '<div class="text-red-500">لا توجد مواعيد متاحة.</div>';
-                return;
-            }
-
-            const intervals = get30MinuteIntervals(
-                slot.start_time,
-                slot.end_time,
-                dayKey === getTodayDayKey(),
-                new Date().getHours() * 60 + new Date().getMinutes()
-            );
-
-            if (intervals.length === 0) {
-                slotsContainer.innerHTML = '<div class="text-red-500">لا توجد أوقات متاحة لبقية هذا اليوم.</div>';
-                return;
-            }
-
-            intervals.forEach(interval => {
-                const btn = document.createElement('button');
-                btn.classList.add('time-slot');
-                btn.value = interval.start;
-                btn.innerText = `${interval.start}`;
-                slotsContainer.appendChild(btn);
-            });
+        function getTodayMinutes() {
+            const now = new Date();
+            return now.getHours() * 60 + now.getMinutes();
         }
 
-        function get30MinuteIntervals(start, end, isToday = false, currentMinutes = 0) {
-            const result = [];
+        function pad(n) {
+            return n.toString().padStart(2, '0');
+        }
 
+        function get30MinuteIntervals(start, end, isToday = false) {
             let [startHour, startMin] = start.split(':').map(Number);
             let [endHour, endMin] = end.split(':').map(Number);
-
-            const pad = n => n.toString().padStart(2, '0');
+            const currentMinutes = getTodayMinutes();
+            const result = [];
 
             while (startHour < endHour || (startHour === endHour && startMin < endMin)) {
-                const intervalStartMinutes = startHour * 60 + startMin;
+                const totalMinutes = startHour * 60 + startMin;
+                const endMinTotal = totalMinutes + 30;
+                const intervalEndHour = Math.floor(endMinTotal / 60);
+                const intervalEndMin = endMinTotal % 60;
 
-                const endIntervalMin = startMin + 30;
-                let intervalEndHour = startHour;
-                let intervalEndMin = endIntervalMin;
-
-                if (endIntervalMin >= 60) {
-                    intervalEndHour += 1;
-                    intervalEndMin -= 60;
-                }
-
-                // Skip past intervals only for today
-                if (isToday && intervalStartMinutes <= currentMinutes) {
+                if (isToday && totalMinutes <= currentMinutes) {
                     startHour = intervalEndHour;
                     startMin = intervalEndMin;
                     continue;
@@ -176,8 +144,7 @@
                 ) break;
 
                 result.push({
-                    start: `${pad(startHour)}:${pad(startMin)}`,
-                    end: `${pad(intervalEndHour)}:${pad(intervalEndMin)}`
+                    start: `${pad(startHour)}:${pad(startMin)}`
                 });
 
                 startHour = intervalEndHour;
@@ -187,19 +154,62 @@
             return result;
         }
 
-        // Auto-load first day (today)
-        window.addEventListener('DOMContentLoaded', () => {
-            selectDay('{{ $daysFromToday[0] }}');
-        });
+        function renderSlots(dayKey) {
+            const slotsContainer = document.getElementById('time-slots-container');
+            slotsContainer.innerHTML = '';
 
-        // Add click listeners for all days
-        document.querySelectorAll('.calendar-day').forEach(el => {
-            el.addEventListener('click', () => {
-                selectDay(el.dataset.day);
+            const schedule = scheduleData[dayKey];
+            if (!schedule) {
+                slotsContainer.innerHTML = '<div class="text-red-500">لا توجد مواعيد متاحة.</div>';
+                return;
+            }
+
+            const isToday = dayKey === todayKey;
+            const intervals = get30MinuteIntervals(schedule.start_time, schedule.end_time, isToday);
+            const booked = bookedSlotsData[dayKey] || [];
+
+            if (intervals.length === 0) {
+                slotsContainer.innerHTML = '<div class="text-red-500">لا توجد أوقات متاحة لبقية هذا اليوم.</div>';
+                return;
+            }
+
+            intervals.forEach(interval => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.classList.add('time-slot');
+                btn.textContent = interval.start;
+
+                if (booked.includes(interval.start)) {
+                    btn.disabled = true;
+                    btn.classList.add('disabled-slot');
+                } else {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.time-slot').forEach(b => b.classList.remove(
+                            'selected'));
+                        btn.classList.add('selected');
+                        document.getElementById('selected_time_input').value = interval.start;
+                        document.getElementById('selected_day_input').value = dayKey;
+                    });
+                }
+
+                slotsContainer.appendChild(btn);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultDay = '{{ $selectedDay }}';
+            renderSlots(defaultDay);
+
+            document.querySelectorAll('.calendar-day').forEach(dayBtn => {
+                dayBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove(
+                        'selected'));
+                    dayBtn.classList.add('selected');
+                    const dayKey = dayBtn.dataset.day;
+                    renderSlots(dayKey);
+                });
             });
         });
-
-
     </script>
 
 </x-public.layout>

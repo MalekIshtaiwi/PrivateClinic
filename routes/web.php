@@ -94,9 +94,10 @@ Route::middleware('auth')->group(function () {
 //personal appointment routes
 
 
-    /*make a controller for this route the user sees the schedule there and interacts with the patient controller
-     and the appointments controller to book appointments and the appointments controller generates slots for the available
-     times and days based on the day and time of the user and prevents them from double booking
+/*make a controller for this route the user sees the schedule there and interacts with the patient controller
+ and the appointments controller to book appointments and the appointments controller generates slots for the available
+ times and days based on the day and time of the user and prevents them from double booking
 
-    */
-    Route::get('/appointments', [UserAppointmentsController::class, 'index']);
+*/
+Route::get('/appointments', [UserAppointmentsController::class, 'index'])->name('');
+Route::post('/appointments', [UserAppointmentsController::class, 'store']);
