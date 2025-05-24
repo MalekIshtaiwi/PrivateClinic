@@ -11,22 +11,31 @@ class AppointmentsController extends Controller
 {
     public function index()
     {
+        // Days in custom order: Saturday to Thursday (Friday is excluded)
         $weekDays = ['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
 
+        // Today’s name (lowercase)
         $today = strtolower(Carbon::now()->format('l'));
-        $todayIndex = array_search($today, $weekDays);
 
-        // Handle case if today is 'friday' (not in the DB)
-        $daysFromToday = $todayIndex !== false
-            ? array_slice($weekDays, $todayIndex)
-            : $weekDays;
+        // If today is Friday, skip to Saturday
+        $startDayIndex = $today === 'friday' ? 0 : array_search($today, $weekDays);
 
-        $schedule = Schedule::whereIn('day_of_week', $daysFromToday)
-            ->where('is_active', true)
-            ->get()
-            ->groupBy('day_of_week');
+        // Rotate week from today (or Saturday if Friday)
+        $rotatedWeek = array_merge(
+            array_slice($weekDays, $startDayIndex),
+            array_slice($weekDays, 0, $startDayIndex)
+        );
 
-        // Arabic day mapping
+        // Load active schedule from DB
+        $activeSchedules = Schedule::where('is_active', true)->get()->keyBy('day_of_week');
+
+        // Filter only active days
+        $daysFromToday = array_values(array_filter(
+            $rotatedWeek,
+            fn($day) => $activeSchedules->has($day)
+        ));
+
+        // Arabic translation
         $arabicDays = [
             'saturday' => 'السبت',
             'sunday' => 'الأحد',
@@ -35,17 +44,18 @@ class AppointmentsController extends Controller
             'wednesday' => 'الأربعاء',
             'thursday' => 'الخميس',
         ];
-
-        $daysFromTodayArabic = collect($daysFromToday)->map(fn($day) => $arabicDays[$day] ?? $day);
-        $todayArabic = $arabicDays[$today] ?? 'اليوم';
         /* current user's patients*/
         $user = Auth::user();
         $patients = $user ? $user->patients : [];
+
+
         return view('public.appointments.index', [
             'daysFromToday' => $daysFromToday,
-            'daysFromTodayArabic' => $daysFromTodayArabic,
-            'todayArabic' => $todayArabic,
-            'schedule' => $schedule,
+            'arabicDays' => $arabicDays,
+            'schedule' => $activeSchedules,
+            'selectedDay' => $daysFromToday[0] ?? null, // default selection
+            'currentTime' => Carbon::now()->format('H:i'),
+            'today' => $today,
             'patients' => $patients,
         ]);
     }
