@@ -36,7 +36,7 @@
                             المثلى.</p>
                     </div>
                     <div class="doctor-image">
-                        <img src="https://scontent.famm10-1.fna.fbcdn.net/v/t39.30808-6/481056437_3760030710884220_3804395651611651775_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG07mvtZI7yyp20fUT8gqBEyNYHdk45CBvI1gd2TjkIG8WMcdNexTfyEjwCbECWcuSDSBkJfX-RDV-byhUoglUR&_nc_ohc=1e7KGfKHOCQQ7kNvwGJB6Uz&_nc_oc=AdkgudqXki0JacJHddZ9dWzXseVnjcWgGKsVi1DXbV57i8UF1O9zBDPd7wbMUF2VxGg&_nc_zt=23&_nc_ht=scontent.famm10-1.fna&_nc_gid=L6yvHXuse0UXs-JxM1FwBg&oh=00_AfGOwxKfoEydNgzvwKZuoUFTiXfCIaL0MAlm22Feq72m9Q&oe=68095069"
+                        <img  src="{{ asset('images/doctor.jpeg') }}"
                             alt="صورة الدكتور">
                     </div>
                     <form action="/appointments" method="GET">

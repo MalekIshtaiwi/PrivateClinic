@@ -41,12 +41,6 @@
             <div class="col-md-8 col-lg-9">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="dashboard-header mb-0">الجدول الأسبوعي</h4>
-
-                    <div class="d-flex justify-content-between gap-3 p-3">
-                        <button class="add-time-btn">
-                            <i class="fas fa-plus ms-2"></i>إضافة مناوبة
-                        </button>
-                    </div>
                 </div>
 
                 <form action="{{ route('admin.schedule.update') }}" method="POST">
@@ -108,9 +102,11 @@
                         @endforeach
                     </div>
 
-                    <button type="submit" class="btn btn-appointment" style="position: fixed; bottom: 5%; right: 25%;">
-                        حفظ الجدول
-                    </button>
+                    <div class="d-flex justify-content-between gap-3 p-3">
+                        <button type="submit" class="add-time-btn" style="position: fixed; bottom: 5%; right: 25%;">
+                            <i class="fas fa-plus ms-2"></i>حفظ الجدول
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

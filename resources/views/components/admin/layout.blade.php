@@ -12,6 +12,9 @@
     {{ $dashboard_css ?? '' }}
     {{ $appointments_css ?? '' }}
     {{ $schedule_css ?? '' }}
+    {{ $patient_css ?? '' }}
+    {{ $edit_patient_css ?? '' }}
+    {{ $create_patient_css ?? '' }}
 
 </head>
 
@@ -31,13 +34,10 @@
                         <a class="nav-link active" href="{{ route('admin.dashboard') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.patients') }}">المرضى</a>
+                        <a class="nav-link" href="{{ route('admin.patients.index') }}">المرضى</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.appointments') }}">المواعيد</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.records') }}">السجلات الطبية</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.schedule') }}">الجدول الإسبوعي</a>
@@ -58,6 +58,9 @@
     {{ $slot }}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     {{ $schedule_script ?? '' }}
+    {{ $patients_script ?? '' }}
+    {{ $edit_patient_script ?? '' }}
+    {{ $create_patient_script ?? '' }}
 </body>
 
 </html>

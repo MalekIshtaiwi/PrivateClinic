@@ -16,13 +16,11 @@ class AppointmentsController extends Controller
         $today = strtolower(Carbon::now()->format('l'));
         $startDayIndex = $today === 'friday' ? 0 : array_search($today, $weekDays);
         $rotatedWeek = array_merge(array_slice($weekDays, $startDayIndex), array_slice($weekDays, 0, $startDayIndex));
-
         $activeSchedules = Schedule::where('is_active', true)->get()->keyBy('day_of_week');
         $daysFromToday = array_values(array_filter(
             $rotatedWeek,
             fn($day) => $activeSchedules->has($day)
         ));
-
         $arabicDays = [
             'saturday' => 'السبت',
             'sunday' => 'الأحد',
@@ -52,7 +50,7 @@ class AppointmentsController extends Controller
             // Fetch booked appointments for this specific date
             $booked = Appointment::whereDate('date', $targetDate->toDateString())
                 ->pluck('time')
-                ->map(function($time) {
+                ->map(function ($time) {
                     // Ensure time format consistency (H:i)
                     return Carbon::parse($time)->format('H:i');
                 })
@@ -97,27 +95,32 @@ class AppointmentsController extends Controller
         }
 
         // Check if patient already has appointment on this date
-        if (Appointment::where('patient_id', $patientId)
-            ->whereDate('date', $targetDate->toDateString())
-            ->exists()) {
+        if (
+            Appointment::where('patient_id', $patientId)
+                ->whereDate('date', $targetDate->toDateString())
+                ->exists()
+        ) {
             return back()->with('error', 'هذا المريض لديه موعد بالفعل في هذا اليوم');
         }
 
         // Check if time slot is already booked
-        if (Appointment::whereDate('date', $targetDate->toDateString())
-            ->where('time', $time)
-            ->exists()) {
+        if (
+            Appointment::whereDate('date', $targetDate->toDateString())
+                ->where('time', $time)
+                ->exists()
+        ) {
             return back()->with('error', 'هذا الموعد محجوز بالفعل');
         }
 
         // Create the appointment
+
         Appointment::create([
             'user_id' => Auth::id(),
             'patient_id' => $patientId,
             'date' => $targetDate->toDateString(),
             'time' => $time,
             'status' => 'booked',
-            'notes' => $request->notes,
+            'note' => $request->notes
         ]);
 
         return redirect()->back()->with('success', 'تم حجز الموعد بنجاح');

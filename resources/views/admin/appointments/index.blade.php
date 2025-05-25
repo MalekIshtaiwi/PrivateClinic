@@ -17,84 +17,58 @@
                         <th>المريض</th>
                         <th>التاريخ</th>
                         <th>الوقت</th>
-                        <th>نوع الزيارة</th>
-                        <th>الحالة</th>
+                        <th>ملاحظات</th>
+                        <th>حالة الزيارة</th>
                         <th class="actions-column">الإجراءات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Row 1 -->
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="/api/placeholder/40/40" class="avatar me-2" alt="صورة المريض">
-                                <div>
-                                    <p class="patient-name">سارة أحمد</p>
-                                    <p class="patient-id">PAT-2025-001#</p>
+                    @forelse($appointments as $appointment)
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
                                 </div>
-                            </div>
-                        </td>
-                        <td>17 أبريل 2025</td>
-                        <td>09:30 ص</td>
-                        <td>فحص عام</td>
-                        <td>
-                            <span class="badge-confirmed">مؤكد</span>
-                        </td>
-                        <td>
-                            <div class="d-flex">
-                                <button class="btn btn-icon edit me-1">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-icon">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                                <button class="btn btn-icon delete">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 2 -->
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="/api/placeholder/40/40" class="avatar me-2" alt="صورة المريض">
-                                <div>
-                                    <p class="patient-name">محمد خالد</p>
-                                    <p class="patient-id">PAT-2025-002#</p>
+                            </td>
+                            <td class="clickable-td"
+                                data-href="{{ route('admin.patients.show', $appointment->patient->id) }}">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p class="patient-name mb-0">{{ $appointment->patient->name }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>17 أبريل 2025</td>
-                        <td>10:00 ص</td>
-                        <td>متابعة</td>
-                        <td>
-                            <span class="badge-waiting">في الانتظار</span>
-                        </td>
-                        <td>
-                            <div class="d-flex">
-                                <button class="btn btn-icon edit me-1">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-icon">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                                <button class="btn btn-icon delete">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>{{ $appointment->date->translatedFormat('d F Y') }}</td>
+                            <td>{{ $appointment->time }}</td>
+                            <td>{{ $appointment->note }}</td>
+                            <td>
+                                @if ($appointment->status === 'done')
+                                    <span class="badge-confirmed">مؤكد</span>
+                                @elseif($appointment->status === 'booked')
+                                    <span class="badge-waiting">في الانتظار</span>
+                                @else
+                                    <span class="badge-cancelled">ملغي</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <button class="btn btn-icon edit me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-icon">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-icon delete">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">لا توجد مواعيد</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -102,28 +76,23 @@
         <!-- Pagination -->
         <div class="row">
             <div class="col-md-6">
-                <p class="page-info">عرض 1-10 من 45 موعد</p>
+                <p class="page-info">
+                    عرض {{ $appointments->firstItem() }}-{{ $appointments->lastItem() }} من {{ $appointments->total() }}
+                    موعد
+                </p>
             </div>
             <div class="col-md-6">
-                <nav aria-label="Page navigation" class="float-md-end">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo; السابق</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">التالي &raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                {{ $appointments->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.clickable-td').forEach(function(td) {
+                td.addEventListener('click', function() {
+                    window.location.href = td.dataset.href;
+                });
+            });
+        });
+    </script>
 </x-admin.layout>

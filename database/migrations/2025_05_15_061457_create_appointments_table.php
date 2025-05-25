@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
             $table->enum('status',['booked','cancelled','done'])->default('booked');
+            $table->text('note')->nullable();
             $table->timestamps();
 
             $table->unique(['patient_id','date']);

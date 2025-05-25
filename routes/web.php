@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MedicalRecordsController;
-use App\Http\Controllers\Admin\PatientsController;
+use App\Http\Controllers\Admin\PatientsController as AdminPatientsController;
 use App\Http\Controllers\Admin\ScheduleController;
 
 /*User Controllers */
@@ -18,8 +18,8 @@ use PHPUnit\Framework\Attributes\Group;
 /*----------------------------------------------------Admin Routes--------------------------------------------*/
 
 //Auth Routes
-Route::get('/admin/login', [AdminSessionController::class, 'index']);
-Route::post('/admin/login', [AdminSessionController::class, 'login'])->name('admin.login');
+Route::get('/admin/login', [AdminSessionController::class, 'index'])->middleware('guest');
+Route::post('/admin/login', [AdminSessionController::class, 'login'])->name('admin.login')->middleware('guest');
 Route::post('/admin/logout', [AdminSessionController::class, 'logout'])->name('admin.logout')->middleware('doctor');
 
 //Dashboard Routes
@@ -49,17 +49,37 @@ Route::middleware('doctor')->group(function () {
 });
 
 //Patients Routes
-Route::middleware('doctor')->group(function () {
+Route::middleware( 'doctor')->prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('/admin/patients', [PatientsController::class, 'index'])->name('admin.patients');
+    // Other admin routes...
 
+    // Patients routes
+    Route::resource('patients', AdminPatientsController::class);
 
+    // Additional routes for search and filter functionality
+    Route::get('patients/search', [AdminPatientsController::class, 'search'])->name('patients.search');
+    Route::get('patients/filter', [AdminPatientsController::class, 'filter'])->name('patients.filter');
+
+    // Other admin routes...
 });
+// Route::middleware('doctor')->group(function () {
+
+//     Route::get('/admin/patients', [PatientsController::class, 'index'])->name('admin.patients');
+//     Route::get('/admin/patients/{patient}', [PatientsController::class, 'show'])->name('admin.patients.show');
+
+
+//     Route::get('patients/search', [PatientController::class, 'search'])->name('patients.search');
+//     Route::get('patients/filter', [PatientController::class, 'filter'])->name('patients.filter');
+
+// });
 
 //Medical Records Routes
 Route::middleware('doctor')->group(function () {
 
-    Route::get('/admin/records', [MedicalRecordsController::class, 'index'])->name('admin.records');
+    Route::prefix('/admin')->name('admin.')->middleware('doctor')->group(function () {
+        Route::get('/patients/{patient}/medical-records/create', [MedicalRecordsController::class, 'create'])->name('medical_records.create');
+        Route::post('/patients/{patient}/medical-records', [MedicalRecordsController::class, 'store'])->name('medical_records.store');
+    });
 
 
 });
