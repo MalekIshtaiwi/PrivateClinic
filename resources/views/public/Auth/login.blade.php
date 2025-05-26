@@ -231,21 +231,6 @@
     <div class="login-container">
         <!-- Login Form Side -->
         <div class="login-form">
-            <!-- Steps -->
-            <div class="steps">
-                <div class="step">
-                    <i class="fa-solid fa-user-plus"></i>
-                    <div class="step-label">التسجيل</div>
-                </div>
-                <div class="step">
-                    <i class="fa-solid fa-check"></i>
-                    <div class="step-label">التحقق</div>
-                </div>
-                <div class="step active">
-                    <i class="fa-solid fa-1"></i>
-                    <div class="step-label">رقم الهاتف</div>
-                </div>
-            </div>
 
             <!-- Login Form Heading -->
             <div class="login-heading">
@@ -290,7 +275,7 @@
             <!-- Logo -->
             <div class="sidebar-logo">
                 <i class="fa-solid fa-hospital"></i>
-                <h3>منصة الرعاية الصحية</h3>
+                <h3>عيادة د. اشتيوي</h3>
             </div>
 
             <!-- Features -->
@@ -302,12 +287,6 @@
                     <i class="fa-solid fa-calendar-check"></i>
                 </div>
 
-                <div class="feature-item">
-                    <div>
-                        <h5>تواصل مباشر مع أفضل الأطباء</h5>
-                    </div>
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
 
                 <div class="feature-item">
                     <div>

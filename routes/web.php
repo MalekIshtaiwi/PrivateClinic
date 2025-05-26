@@ -49,7 +49,7 @@ Route::middleware('doctor')->group(function () {
 });
 
 //Patients Routes
-Route::middleware( 'doctor')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('doctor')->prefix('admin')->name('admin.')->group(function () {
 
     // Other admin routes...
 
@@ -92,7 +92,7 @@ Route::middleware('doctor')->group(function () {
 
 Route::get('/', function () {
     return view('public.landing');
-});
+})->name('home');
 
 //Auth Routes
 Route::middleware('guest')->group(function () {
@@ -104,11 +104,14 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
+    Route::post('/profile', [SessionController::class, 'login'])->name('profile');
 });
 
 //Patients Routes
 Route::middleware('auth')->group(function () {
     Route::resource('patients', PatientController::class)->except(['destroy', 'edit', 'create']);
+    Route::get('/appointments', [UserAppointmentsController::class, 'index'])->name('appointments.index');
+    Route::post('/appointments', [UserAppointmentsController::class, 'store']);
 });
 
 //personal appointment routes
@@ -119,5 +122,4 @@ Route::middleware('auth')->group(function () {
  times and days based on the day and time of the user and prevents them from double booking
 
 */
-Route::get('/appointments', [UserAppointmentsController::class, 'index'])->name('');
-Route::post('/appointments', [UserAppointmentsController::class, 'store']);
+

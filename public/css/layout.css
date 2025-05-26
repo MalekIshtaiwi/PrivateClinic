@@ -23,10 +23,20 @@ body {
     font-size: 1.5rem;
 }
 
+.navbar-brand:hover {
+    color: var(--color-dark);
+}
+
 .nav-link {
     color: #495057;
     font-weight: 500;
     margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-darkest);
 }
 
 .navbar-toggler {
@@ -38,4 +48,143 @@ body {
     box-shadow: none;
 }
 
+.user-dropdown-btn {
+    background-color: var(--color-medium);
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
 
+.user-dropdown-btn:hover {
+    background-color: var(--color-dark);
+    transform: scale(1.05);
+}
+
+.user-dropdown-btn:focus {
+    box-shadow: 0 0 0 3px rgba(174, 207, 208, 0.3);
+    outline: none;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e9ecef;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #495057;
+    border-bottom: 1px solid #f8f9fa;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-lightest);
+    color: var(--color-darkest);
+}
+
+.dropdown-item i {
+    margin-left: 0.5rem;
+    width: 16px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.dropdown-divider {
+    margin: 0.5rem 0;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-link {
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+    font-weight: inherit;
+    font-size: inherit;
+    text-align: inherit;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+}
+
+.btn-link:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0;
+        margin: 0;
+    }
+
+    .user-dropdown-btn {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .dropdown-menu {
+        min-width: 160px;
+    }
+}
+
+/* Additional utility classes */
+.text-muted {
+    color: #6c757d !important;
+}
+
+.bg-light {
+    background-color: var(--color-lightest) !important;
+}
+
+.text-primary {
+    color: var(--color-darkest) !important;
+}
+
+.btn-primary {
+    background-color: var(--color-darkest);
+    border-color: var(--color-darkest);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.btn-outline-primary {
+    color: var(--color-darkest);
+    border-color: var(--color-darkest);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-darkest);
+    border-color: var(--color-darkest);
+}

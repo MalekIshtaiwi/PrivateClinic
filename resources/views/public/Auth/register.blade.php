@@ -330,7 +330,7 @@
 
             <!-- Help Text -->
             <div class="help-text">
-                <p>مستخدم مسجل سابقا ؟<a href="#" class="help-link">تسجيل الدخول</a></p>
+                <p>مستخدم مسجل سابقا ؟<a href="/login" class="help-link">تسجيل الدخول</a></p>
             </div>
         </div>
 
@@ -339,7 +339,7 @@
             <!-- Logo -->
             <div class="sidebar-logo">
                 <i class="fa-solid fa-hospital"></i>
-                <h3>منصة الرعاية الصحية</h3>
+                <h3>عيادة د. اشتيوي</h3>
             </div>
 
             <!-- Features -->
@@ -351,12 +351,6 @@
                     <i class="fa-solid fa-calendar-check"></i>
                 </div>
 
-                <div class="feature-item">
-                    <div>
-                        <h5>تواصل مباشر مع أفضل الأطباء</h5>
-                    </div>
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
 
                 <div class="feature-item">
                     <div>

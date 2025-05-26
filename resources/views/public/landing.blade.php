@@ -58,7 +58,7 @@
     </section>
 
     <!-- Features Section (Optional) -->
-    <section class="feature-section">
+    <section class="feature-section" id="services">
         <div class="container">
             <div class="section-title">
                 <h2>خدمات العيادة</h2>
@@ -87,8 +87,8 @@
             </div>
         </div>
     </section>
-    <!-- Contact Section (Optional) -->
-    <div class="contact-container">
+    <!-- Contact Section -->
+    <div class="contact-container" id="contact">
         <header class="page-header">
             <h2>تواصل معنا</h2>
         </header>
