@@ -63,14 +63,7 @@
                             <option value="female">أنثى</option>
                         </select>
                     </div>
-                    <div class="filter-group">
-                        <select class="form-select filter-select" id="statusFilter">
-                            <option value="">جميع الحالات</option>
-                            <option value="married">متزوج</option>
-                            <option value="single">أعزب</option>
-                            <option value="other">أخرى</option>
-                        </select>
-                    </div>
+
                 </div>
             </div>
 
@@ -90,7 +83,7 @@
                         </thead>
                         <tbody>
                             @foreach($patients as $index => $patient)
-                                <tr class="patient-row" data-gender="{{ $patient->gender }}" data-status="{{ $patient->status }}">
+                                <tr class="patient-row" data-gender="{{ $patient->gender }}" >
                                     <td class="patient-id">{{ $index + 1 }}</td>
                                     <td class="patient-name">
                                         <a href="{{ route('admin.patients.show', $patient->id) }}" class="name-link">
@@ -112,25 +105,6 @@
                                             <i class="fas fa-{{ $patient->gender == 'male' ? 'male' : 'female' }}"></i>
                                             {{ $patient->gender == 'male' ? 'ذكر' : 'أنثى' }}
                                         </span>
-                                    </td>
-                                    <td class="patient-status">
-                                        @if($patient->status)
-                                            <span class="status-badge {{ $patient->status }}">
-                                                @switch($patient->status)
-                                                    @case('married')
-                                                        متزوج
-                                                        @break
-                                                    @case('single')
-                                                        أعزب
-                                                        @break
-                                                    @case('other')
-                                                        أخرى
-                                                        @break
-                                                @endswitch
-                                            </span>
-                                        @else
-                                            <span class="no-data">غير محدد</span>
-                                        @endif
                                     </td>
                                     <td class="patient-date">
                                         <span class="date-text">{{ $patient->created_at->format('Y/m/d') }}</span>
@@ -179,21 +153,17 @@
             document.addEventListener('DOMContentLoaded', function() {
                 // Filter functionality
                 const genderFilter = document.getElementById('genderFilter');
-                const statusFilter = document.getElementById('statusFilter');
                 const patientRows = document.querySelectorAll('.patient-row');
 
                 function filterPatients() {
                     const selectedGender = genderFilter.value;
-                    const selectedStatus = statusFilter.value;
 
                     patientRows.forEach(row => {
                         const patientGender = row.dataset.gender;
-                        const patientStatus = row.dataset.status;
 
                         const genderMatch = !selectedGender || patientGender === selectedGender;
-                        const statusMatch = !selectedStatus || patientStatus === selectedStatus;
 
-                        if (genderMatch && statusMatch) {
+                        if (genderMatch) {
                             row.style.display = '';
                         } else {
                             row.style.display = 'none';
@@ -202,7 +172,6 @@
                 }
 
                 genderFilter.addEventListener('change', filterPatients);
-                statusFilter.addEventListener('change', filterPatients);
 
                 // Add hover effects and animations
                 patientRows.forEach(row => {

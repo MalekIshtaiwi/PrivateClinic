@@ -122,54 +122,7 @@
                         </div>
                     </div>
 
-                    {{-- Marital Status --}}
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-heart me-1"></i>
-                            الحالة الاجتماعية
-                        </label>
-                        <div class="status-options">
-                            <div class="radio-option">
-                                <input type="radio"
-                                       class="radio-input"
-                                       id="single"
-                                       name="status"
-                                       value="single"
-                                       {{ old('status', $patient->status ?? '') == 'single' ? 'checked' : '' }}>
-                                <label for="single" class="radio-label">
-                                    <i class="fas fa-user me-1"></i>
-                                    أعزب
-                                </label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio"
-                                       class="radio-input"
-                                       id="married"
-                                       name="status"
-                                       value="married"
-                                       {{ old('status', $patient->status ?? 'married') == 'married' ? 'checked' : '' }}>
-                                <label for="married" class="radio-label">
-                                    <i class="fas fa-ring me-1"></i>
-                                    متزوج
-                                </label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio"
-                                       class="radio-input"
-                                       id="other"
-                                       name="status"
-                                       value="other"
-                                       {{ old('status', $patient->status ?? '') == 'other' ? 'checked' : '' }}>
-                                <label for="other" class="radio-label">
-                                    <i class="fas fa-question me-1"></i>
-                                    أخرى
-                                </label>
-                            </div>
-                        </div>
-                        @error('status')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
+
 
                     {{-- Form Actions --}}
                     <div class="btn-group">

@@ -267,27 +267,6 @@
     color: #E24A90;
 }
 
-.status-badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.status-badge.married {
-    background: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-}
-
-.status-badge.single {
-    background: rgba(255, 193, 7, 0.1);
-    color: #ffc107;
-}
-
-.status-badge.other {
-    background: rgba(108, 117, 125, 0.1);
-    color: #6c757d;
-}
 
 .no-data {
     color: #adb5bd;

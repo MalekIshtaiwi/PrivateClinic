@@ -120,7 +120,7 @@ class AppointmentsController extends Controller
             'date' => $targetDate->toDateString(),
             'time' => $time,
             'status' => 'booked',
-            'note' => $request->notes
+            'visit_type' => $request->visitType
         ]);
 
         return redirect()->back()->with('success', 'تم حجز الموعد بنجاح');

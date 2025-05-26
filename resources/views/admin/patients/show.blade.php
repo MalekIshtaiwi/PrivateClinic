@@ -8,17 +8,6 @@
                 <p><strong>الاسم:</strong> {{ $patient->name }}</p>
                 <p><strong>العمر:</strong> {{ $patient->age ?? 'غير محدد' }}</p>
                 <p><strong>الجنس:</strong> {{ $patient->gender === 'male' ? 'ذكر' : 'أنثى' }}</p>
-                <p><strong>الحالة الاجتماعية:</strong>
-                    @if ($patient->status === 'married')
-                        متزوج
-                    @elseif($patient->status === 'single')
-                        أعزب
-                    @elseif($patient->status === 'other')
-                        أخرى
-                    @else
-                        غير محدد
-                    @endif
-                </p>
 
                 <!-- Actions -->
                 <button class="btn mt-3 mb-3" id="toggleRecordsBtn"

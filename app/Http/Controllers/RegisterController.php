@@ -29,7 +29,6 @@ class RegisterController extends Controller
             'name' => 'required|string|min:3',
             'age' => 'nullable|integer|min_digits:2',
             'gender' => 'required', // you can make this an enum of both values
-            'status' => 'required', // you can make this an enum of both values
         ]);
         //when the user registers they provide data so that we create their first patient
         if (!User::find($user['email'], 'email')) {

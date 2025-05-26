@@ -29,7 +29,6 @@ class PatientsController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'nullable|integer|min:0|max:120',
             'gender' => 'required|in:male,female',
-            'status' => 'nullable|in:married,single,other',
         ]);
 
         // Assuming you have the user_id available (from auth or session)
@@ -59,7 +58,6 @@ class PatientsController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'nullable|integer|min:0|max:120',
             'gender' => 'required|in:male,female',
-            'status' => 'nullable|in:married,single,other',
         ]);
 
         $patient->update($validated);
@@ -96,7 +94,7 @@ class PatientsController extends Controller
     }
 
     /**
-     * Filter patients by gender and status (for AJAX requests)
+     * Filter patients by gender (for AJAX requests)
      */
     public function filter(Request $request)
     {
@@ -106,9 +104,6 @@ class PatientsController extends Controller
             $query->where('gender', $request->gender);
         }
 
-        if ($request->has('status') && $request->status !== '') {
-            $query->where('status', $request->status);
-        }
 
         $patients = $query->orderBy('created_at', 'desc')->get();
 

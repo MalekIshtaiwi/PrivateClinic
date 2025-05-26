@@ -87,6 +87,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <div class="contact-container" id="contact">
         <header class="page-header">
@@ -130,8 +131,8 @@
                     <!-- Phone -->
                     <div class="contact-info-item">
                         <div class="contact-info-text">
-                            <div>+966 123 456 789</div>
-                            <div class="text-muted">من الأحد إلى الخميس • الساعة 9 - 6 مساءً</div>
+                            <div>07 9600 8297</div>
+                            <div class="text-muted">من السبت إلى الخميس • الساعة 9 - 3 مساءً</div>
                         </div>
                         <div class="icon">
                             <i class="fa-solid fa-phone"></i>
@@ -141,7 +142,7 @@
                     <!-- Email -->
                     <div class="contact-info-item">
                         <div class="contact-info-text">
-                            <div>info@yourclinic.com</div>
+                            <div>ishtaiweabuzayed@gmail.com</div>
                         </div>
                         <div class="icon">
                             <i class="fa-solid fa-envelope"></i>
@@ -151,7 +152,7 @@
                     <!-- Address -->
                     <div class="contact-info-item">
                         <div class="contact-info-text">
-                            <div>شارع الشهيد، الرياض، المملكة العربية السعودية</div>
+                            <div>شارع مادبا، مجمع حبيبة ط.2، عمان</div>
                         </div>
                         <div class="icon">
                             <i class="fa-solid fa-location-dot"></i>
@@ -163,12 +164,11 @@
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         setTimeout(() => {
             const msg = document.getElementById('flash-message');

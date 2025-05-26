@@ -296,14 +296,6 @@
                     </select>
                 </div>
                 <div class="mb-4">
-                    <label for="status" class="form-label">الحالة الاجتماعية</label>
-                    <select class="form-control" name="status" id="status">
-                        <option value="single">اعزب</option>
-                        <option value="married">متزوج</option>
-                        <option value="other">أفضل عدم الإجابة</option>
-                    </select>
-                </div>
-                <div class="mb-4">
                     <label for="email" class="form-label">الايميل</label>
                     <input type="email" class="form-control" id="email" placeholder="ahmad@example.com"
                         name="email" dir="rtl">

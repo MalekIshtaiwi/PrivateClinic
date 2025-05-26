@@ -65,18 +65,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="status">الحالة الاجتماعية</label>
-                            <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
-                                <option value="">اختر الحالة</option>
-                                <option value="single" {{ old('status') == 'single' ? 'selected' : '' }}>أعزب</option>
-                                <option value="married" {{ old('status') == 'married' ? 'selected' : '' }}>متزوج</option>
-                                <option value="other" {{ old('status') == 'other' ? 'selected' : '' }}>أخرى</option>
-                            </select>
-                            @error('status')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+
 
                         <input type="hidden" name="user_id" value="1">
 

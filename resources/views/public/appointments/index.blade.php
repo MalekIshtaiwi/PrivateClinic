@@ -88,8 +88,15 @@
                         </ul>
 
                         <div class="form-group mt-2">
-                            <label class="form-label">سبب الزيارة:</label>
-                            <textarea class="form-control" name="notes"></textarea>
+                            <label class="form-label">نوع الزيارة: </label>
+                            <select name="visitType" id="">
+                                <option value="first">
+                                    زيارة أولى
+                                </option>
+                                <option value="return">
+                                    زيارة مكررة
+                                </option>
+                            </select>
                         </div>
 
                         <div class="form-group mt-2">
