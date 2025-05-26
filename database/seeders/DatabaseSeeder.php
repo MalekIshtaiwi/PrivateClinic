@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Patient;
+use App\Models\MedicalRecord;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(10)->create();
+
+        Patient::factory()->count(30)->create();
+        $patients = Patient::all();
+
+        foreach ($patients as $patient) {
+            MedicalRecord::factory()->create([
+                'patient_id' => $patient->id,
+            ]);
+        }
 
         User::create([
             'name' => 'اشتيوي',

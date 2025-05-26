@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PatientFactory extends Factory
 {
+    protected $model = Patient::class;
+
     /**
      * Define the model's default state.
      *
@@ -16,8 +20,14 @@ class PatientFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ar_JO'); // Use Arabic locale
+
         return [
-            //
+            'user_id' => User::factory(), // Creates a new user for each patient
+            'name' => $faker->name,
+            'age' => $this->faker->numberBetween(1, 100),
+            'gender' => $this->faker->randomElement(['male', 'female']),
+            'status' => $this->faker->randomElement(['married', 'single', 'other']),
         ];
     }
 }
