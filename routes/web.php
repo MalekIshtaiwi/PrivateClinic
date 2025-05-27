@@ -104,7 +104,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
-    Route::post('/profile', [SessionController::class, 'login'])->name('profile');
+    Route::post('/profile', [SessionController::class, 'show'])->name('profile.show');
+
 });
 
 //Patients Routes

@@ -254,7 +254,7 @@
         <!-- Login Form Side -->
         <div class="login-form">
             <!-- Steps -->
-            <div class="steps">
+            {{-- <div class="steps">
                 <div class="step">
                     <i class="fa-solid fa-user-plus"></i>
                     <div class="step-label">التسجيل</div>
@@ -267,12 +267,12 @@
                     <i class="fa-solid fa-1"></i>
                     <div class="step-label">رقم الهاتف</div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Login Form Heading -->
             <div class="login-heading">
                 <h3>التسجيل</h3>
-                <p>أدخل رقم هاتفك للمتابعة</p>
+                {{-- <p>أدخل رقم هاتفك للمتابعة</p> --}}
             </div>
 
             <!-- Phone Number Form -->

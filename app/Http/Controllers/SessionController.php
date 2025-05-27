@@ -33,6 +33,10 @@ class SessionController extends Controller
         return redirect('/')->with('success', 'Logged in successfully');
     }
 
+    public function show(){
+        return view('publicAuth.profile.index');
+    }
+
     public function logout()
     {
         Auth::logout();

@@ -46,10 +46,7 @@
                 <form action="{{ route('admin.logout') }}" method="POST" class="d-flex">
                     @csrf
                     <div class="position-relative">
-                        <input class="form-control search-box" type="search" placeholder="بحث عن المريض..."
-                            aria-label="Search">
                         <button type="submit" class="nav-link">تسجيل الخروج</button>
-
                     </div>
                 </form>
             </div>

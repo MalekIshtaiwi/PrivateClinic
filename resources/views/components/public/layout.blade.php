@@ -53,7 +53,7 @@
                 <!-- Authenticated Mode Dropdown -->
                 <ul class="dropdown-menu">
                     <li>
-                        {{-- <a class="dropdown-item" href="{{ route('profile.show') }}"> --}}
+                        <a class="dropdown-item" href="{{ route('profile.show') }}">
                             <i class="fas fa-user"></i>
                             الملف الشخصي
                         </a>
@@ -95,9 +95,6 @@
                     @auth
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('appointments.*') ? 'active' : '' }}" href="{{ route('appointments.index') }}">المواعيد</a>
-                    </li>
-                    <li class="nav-item">
-                        {{-- <a class="nav-link {{ request()->routeIs('profile.*') ? 'active' : '' }}" href="{{ route('profile.show') }}">الملف الشخصي</a> --}}
                     </li>
                     @endauth
                     <li class="nav-item">
