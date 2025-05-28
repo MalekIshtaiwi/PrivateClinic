@@ -44,6 +44,8 @@ Route::middleware('doctor')->group(function () {
 Route::middleware('doctor')->group(function () {
 
     Route::get('/admin/appointments', [AppointmentsController::class, 'index'])->name('admin.appointments');
+    Route::patch('/admin/appointments-approve/{appointment}', [AppointmentsController::class, 'approve'])->name('admin.appointments.approve');
+    Route::patch('/admin/appointments-cancel/{appointment}', [AppointmentsController::class, 'cancel'])->name('admin.appointments.cancel');
 
 
 });
