@@ -9,25 +9,12 @@
             <div class="col-md-4 mb-3">
                 <div class="stats-card p-3">
                     <div class="d-flex align-items-center">
-                        <div class="stats-icon patients me-3">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div>
-                            <div class="card-title">سجل المرضى</div>
-                            <div class="card-value">1,247</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="stats-card p-3">
-                    <div class="d-flex align-items-center">
                         <div class="stats-icon appointments me-3">
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
                             <div class="card-title">المواعيد القادمة</div>
-                            <div class="card-value">156</div>
+                            <div class="card-value">{{ $upcomingAppointments }}</div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +27,7 @@
                         </div>
                         <div>
                             <div class="card-title">مواعيد اليوم</div>
-                            <div class="card-value">24</div>
+                            <div class="card-value">{{ $todayAppointments }}</div>
                         </div>
                     </div>
                 </div>
@@ -61,30 +48,17 @@
                             <div class="action-text">موعد جديد</div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="action-card p-3">
-                            <div class="action-icon">
-                                <i class="fas fa-user-plus"></i>
+                    <a href="{{ route('admin.patients.create') }}" style="text-decoration: none; color: inherit;">
+                        <div class="col">
+                            <div class="action-card p-3" style="cursor: pointer;">
+                                <div class="action-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="action-text">مريض جديد</div>
                             </div>
-                            <div class="action-text">مريض جديد</div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="action-card p-3">
-                            <div class="action-icon">
-                                <i class="fas fa-prescription-bottle-alt"></i>
-                            </div>
-                            <div class="action-text">وصفة طبية</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="action-card p-3">
-                            <div class="action-icon">
-                                <i class="fas fa-file-medical"></i>
-                            </div>
-                            <div class="action-text">تقرير طبي</div>
-                        </div>
-                    </div>
+                    </a>
+
                 </div>
             </div>
 
@@ -92,52 +66,48 @@
             <div class="col-md-8">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5>جدول اليوم</h5>
-                    <button class="btn add-appointment-btn btn-sm">
-                        <i class="fas fa-plus me-1"></i> موعد جديد
-                    </button>
                 </div>
                 <div class="schedule-card p-3">
-                    <!-- Appointment Item 1 -->
-                    <div class="appointment-item appointment-confirmed">
-                        <div class="row align-items-center">
-                            <div class="col-md-2 col-3">
-                                <div class="appointment-time">09:00</div>
-                            </div>
-                            <div class="col-md-7 col-6">
-                                <div class="d-flex align-items-center">
-                                    <img src="/api/placeholder/36/36" class="avatar me-2" alt="صورة المريض">
-                                    <div>
-                                        <div class="appointment-name">فاطمة أحمد</div>
-                                        <div class="appointment-type">فحص دوري</div>
+                    @forelse($todaySchedule as $appointment)
+                        <form action="{{ route('admin.patients.show', $appointment->patient->id) }}" method="GET"
+                            class="appointment-form">
+                            <div class="appointment-item appointment-{{ $appointment->status }} appointment-clickable"
+                                onclick="this.closest('form').submit();" style="cursor: pointer;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-3">
+                                        <div class="appointment-time">
+                                            {{ \Carbon\Carbon::parse($appointment->time)->format('H:i') }}</div>
+                                    </div>
+                                    <div class="col-md-7 col-6">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <div class="appointment-name">{{ $appointment->patient->name }}</div>
+                                                <div class="appointment-type">
+                                                    {{ $appointment->visit_type == 'first' ? 'زيارة أولى' : 'زيارة متابعة' }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-3 text-end">
+                                        <span class="badge badge-{{ $appointment->status }} rounded-pill">
+                                            @if ($appointment->status == 'booked')
+                                                محجوز
+                                            @elseif($appointment->status == 'cancelled')
+                                                ملغي
+                                            @else
+                                                منتهي
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-3 text-end">
-                                <span class="badge badge-confirmed rounded-pill">مؤكد</span>
-                            </div>
+                        </form>
+                    @empty
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-calendar-times fa-2x mb-2"></i>
+                            <p>لا توجد مواعيد لهذا اليوم</p>
                         </div>
-                    </div>
-
-                    <!-- Appointment Item 2 -->
-                    <div class="appointment-item appointment-waiting">
-                        <div class="row align-items-center">
-                            <div class="col-md-2 col-3">
-                                <div class="appointment-time">10:30</div>
-                            </div>
-                            <div class="col-md-7 col-6">
-                                <div class="d-flex align-items-center">
-                                    <img src="/api/placeholder/36/36" class="avatar me-2" alt="صورة المريض">
-                                    <div>
-                                        <div class="appointment-name">محمد خالد</div>
-                                        <div class="appointment-type">استشارة</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-3 text-end">
-                                <span class="badge badge-waiting rounded-pill">في الانتظار</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </div>

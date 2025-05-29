@@ -71,6 +71,7 @@ class PatientsController extends Controller
      */
     public function destroy(Patient $patient)
     {
+        
         $patient->delete();
 
         return redirect()->route('admin.patients.index')

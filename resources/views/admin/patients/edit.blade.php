@@ -45,7 +45,7 @@
                 </div>
 
                 {{-- Edit Form --}}
-                <form action="{{ route('admin.patients.update', $patient->id }}" method="POST">
+                <form action="{{ route('admin.patients.update', $patient->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
